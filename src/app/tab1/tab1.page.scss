@@ -1,0 +1,97 @@
+// Elimino el ::after del header
+ion-header::after {
+    height: 0px;
+}
+.input-icono {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-radius: 100px;
+    background-color: #ffff;
+    margin-left: 4px;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 10px;
+    ion-icon {
+        margin-right: 8px;
+        font-size: 32px;
+        color: #333C4B;
+        .-search {
+          transform: rotate(90deg);
+        }
+    }
+  }
+  .input-icono input {
+    font-size: 0.9em;
+    border: none;
+    background-color: #ffff;
+    height: 32px;
+    color: #333C4B;
+    position: absolute;
+    left: 65px;
+    width: calc(100% - 130px);
+  }
+  .input-icono input:focus {
+    outline: none;
+  }
+.header-top {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    position: fixed;
+    width: 100%;
+    top: 5px;
+    ion-searchbar {
+        padding-top: 8px;
+    }
+
+    .filters {
+        font-size: 25px;
+    }
+}
+
+
+.container-persons {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    margin-top: 50px;
+    gap: 8px;
+    .person-item {
+        display: flex;
+        padding: 8px;
+        border-radius: 8px;
+        img {
+            width: 60px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+        .block-start {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .names {
+                display: flex;
+                gap: 3px;
+                font-weight: 600;
+                font-size: 16px;
+            }
+            
+            .city {
+                font-size: 16px;
+            }
+        }
+
+        .block-end {
+            display: flex;
+            flex-direction: column;
+            margin-left: auto;
+            justify-content: space-around;
+            font-size: 14px;
+            align-items: flex-end;
+        }
+    }
+}

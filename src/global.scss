@@ -25,7 +25,6 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-
 // Fuentes
 @font-face {
     font-family: OpenSans;
@@ -33,9 +32,38 @@
 }
 // Variables
 :root {
-    --color-1: #4c5361;
-    --color-2: #758096;
-    --color-danger: #e24d33;
-    --white-1: #f2f3f4
+    --principal-1: #4c5361;
+    --principal-2: #e24d33;
+    --principal-3: #758096;
+
+    --color-white: #ffffff;
     }
+
+.-bc-p-1 {
+    background-color: var(--principal-1);
+}
+.-bc-p-2 {
+    background-color: var(--principal-2);
+}
+.-bc-p-3 {
+    background-color: var(--principal-3);
+}
+
+.-bc-white {
+    background-color: var(--color-white);
+}
+
+.-tc-p-1 {
+    color: var(--principal-1);
+}
+.-tc-p-2 {
+    color: var(--principal-2);
+}
+.-tc-p-3 {
+    color: var(--principal-3);
+}
+
+.-tc-white {
+    color: var(--color-white);
+}
 
