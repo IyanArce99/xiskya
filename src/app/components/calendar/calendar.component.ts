@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { CalendarEventTimesChangedEvent, CalendarEvent } from 'angular-calendar';
-
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-calendar',
+  templateUrl: './calendar.component.html',
+  styleUrls: ['./calendar.component.scss'],
 })
-export class Tab2Page {
+export class CalendarComponent implements OnInit {
+
+  indexTypeCalendar: number = 0;
+  arrayTypesCalendar: string[] = ['day', 'week', 'month'];
 
   viewDate: Date = new Date();
   view: string = 'week';
-  locale: string = 'pt';
+  locale: string = 'es';
   isDragging: boolean = false;
 
   refresh: Subject<any> = new Subject();
@@ -21,6 +23,7 @@ export class Tab2Page {
     {
       start: addHours(startOfDay(new Date()), 7),
       end: addHours(startOfDay(new Date()), 9),
+      allDay: true,
       title: 'First Event',
       cssClass: 'custom-event',
       color: {
@@ -50,6 +53,27 @@ export class Tab2Page {
     }
   ]
 
-  constructor() {}
+  constructor() { }
+
+  ngOnInit() {}
+
+  test(data) : void {
+    console.log("Click: ", data.event);
+  }
+  nextType(): void {
+    if (this.indexTypeCalendar === 2) {
+      this.indexTypeCalendar = 0;
+    }else {
+      this.indexTypeCalendar += 1;
+    }
+  }
+
+  previousType(): void {
+    if (this.indexTypeCalendar === 0) {
+      this.indexTypeCalendar = 2;
+    }else {
+      this.indexTypeCalendar -= 1;
+    }
+  }
 
 }

@@ -1,0 +1,21 @@
+  <div class="-header-type">
+    <ion-icon name="chevron-back-outline" (click)='previousType()'></ion-icon>
+    <span>{{arrayTypesCalendar[indexTypeCalendar]}}</span>
+    <ion-icon name="chevron-forward-outline" (click)='nextType()'></ion-icon>
+  </div>
+
+  <mwl-calendar-month-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "month"'
+    [viewDate]="viewDate"
+    [events]="events"
+    (eventClicked)='test($event)'>
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "week"'
+    [viewDate]="viewDate"
+    [events]="events"
+    (eventClicked)='test($event)'>
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "day"'
+    [viewDate]="viewDate"
+    [events]="events"
+    (eventClicked)='test($event)'>
+  </mwl-calendar-day-view>
