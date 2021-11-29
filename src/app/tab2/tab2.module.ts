@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from '../components/calendar/calendar.component';
+import { AddEventComponent } from '../components/add-event/add-event.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import { CalendarComponent } from '../components/calendar/calendar.component';
     Tab2PageRoutingModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
-  declarations: [Tab2Page, CalendarComponent]
+  declarations: [Tab2Page, CalendarComponent, AddEventComponent]
 })
 export class Tab2PageModule {}

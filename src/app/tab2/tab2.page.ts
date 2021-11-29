@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { CalendarEventTimesChangedEvent, CalendarEvent } from 'angular-calendar';
+import { ModalController } from '@ionic/angular';
+import { AddEventComponent } from '../components/add-event/add-event.component';
 
 @Component({
   selector: 'app-tab2',
@@ -50,6 +52,15 @@ export class Tab2Page {
     }
   ]
 
-  constructor() {}
+  constructor(public modalController: ModalController) {}
 
+  async presentModal() {
+    console.log("HOlis")
+    const modal = await this.modalController.create({
+      component: AddEventComponent,
+      cssClass: 'my-custom-class',
+      swipeToClose: true
+    });
+    return await modal.present();
+  }
 }

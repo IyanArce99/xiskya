@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { Subject } from 'rxjs';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { CalendarEventTimesChangedEvent, CalendarEvent } from 'angular-calendar';
@@ -18,6 +18,8 @@ export class CalendarComponent implements OnInit {
   isDragging: boolean = false;
 
   refresh: Subject<any> = new Subject();
+
+  @Output() _addEvent: EventEmitter<void> = new EventEmitter();
 
   events: CalendarEvent[] = [
     {
@@ -60,6 +62,11 @@ export class CalendarComponent implements OnInit {
   test(data) : void {
     console.log("Click: ", data.event);
   }
+
+  openModalAddEvent(): void {
+    this._addEvent.emit();
+  }
+
   nextType(): void {
     if (this.indexTypeCalendar === 2) {
       this.indexTypeCalendar = 0;
