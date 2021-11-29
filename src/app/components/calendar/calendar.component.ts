@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnChanges, Input} from '@angular/core';
 import { Subject } from 'rxjs';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { CalendarEventTimesChangedEvent, CalendarEvent } from 'angular-calendar';
@@ -19,7 +19,7 @@ export class CalendarComponent implements OnInit {
 
   refresh: Subject<any> = new Subject();
 
-  @Output() _addEvent: EventEmitter<void> = new EventEmitter();
+  @Output() _addEvent: EventEmitter<any> = new EventEmitter();
 
   events: CalendarEvent[] = [
     {
@@ -58,13 +58,18 @@ export class CalendarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {}
+  @Input() clickDate: any;
+  dayClicked(e){
+    console.log("HOlis: ", e)
+    this.openModalAddEvent(e);
+  }
 
   test(data) : void {
     console.log("Click: ", data.event);
   }
 
-  openModalAddEvent(): void {
-    this._addEvent.emit();
+  openModalAddEvent(value): void {
+    this._addEvent.emit(value);
   }
 
   nextType(): void {
@@ -82,5 +87,7 @@ export class CalendarComponent implements OnInit {
       this.indexTypeCalendar -= 1;
     }
   }
-
+  testardo(): void {
+    console.log(this.clickDate);
+  }
 }

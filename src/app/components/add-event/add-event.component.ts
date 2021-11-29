@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-event',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEventComponent implements OnInit {
 
-  constructor() { }
+  constructor(public modalController: ModalController) { }
 
   ngOnInit() {}
+
+  dismissModal(): void {
+    this.modalController.dismiss();
+  }
 
 }

@@ -54,8 +54,8 @@ export class Tab2Page {
 
   constructor(public modalController: ModalController) {}
 
-  async presentModal() {
-    console.log("HOlis")
+  async presentModal(value) {
+    console.log("HOlis: ", value)
     const modal = await this.modalController.create({
       component: AddEventComponent,
       cssClass: 'my-custom-class',

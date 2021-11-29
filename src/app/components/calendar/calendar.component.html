@@ -8,21 +8,23 @@
     [viewDate]="viewDate"
     [events]="events"
     (eventClicked)='test($event)'
-    (dayClicked)='test($event)'>
+    (dayClicked)='dayClicked($event.day)'>
   </mwl-calendar-month-view>
   <mwl-calendar-week-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "week"'
     [viewDate]="viewDate"
     [events]="events"
    (eventClicked)='test($event)'
-    (dayClicked)='test($event)'>
+    (hourSegmentClicked)='dayClicked($event)'>
   </mwl-calendar-week-view>
   <mwl-calendar-day-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "day"'
     [viewDate]="viewDate"
     [events]="events"
     (eventClicked)='test($event)'
-    (dayClicked)='test($event)'>
+    (hourSegmentClicked)='dayClicked($event)'>
   </mwl-calendar-day-view>
 
   <div class="add-event" (click)='openModalAddEvent()'>
     <ion-icon name="add-outline"></ion-icon>
   </div>
+
+  <button (click)="testardo()">TESTARDO</button>
