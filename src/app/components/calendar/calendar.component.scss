@@ -19,8 +19,6 @@
     display: flex;
     width: 60px;
     height: 60px;
-    border-radius: 999999px;
-    border: 1px solid;
     align-items: center;
     justify-content: center;
     position: fixed;
@@ -29,7 +27,4 @@
     transform: translateX(-50%);
     background-color: white;
     z-index: 9999;
-    ion-icon {
-        font-size: 50px;
-    }
 }

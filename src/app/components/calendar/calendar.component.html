@@ -23,8 +23,8 @@
     (hourSegmentClicked)='dayClicked($event)'>
   </mwl-calendar-day-view>
 
-  <div class="add-event" (click)='openModalAddEvent()'>
-    <ion-icon name="add-outline"></ion-icon>
-  </div>
-
-  <button (click)="testardo()">TESTARDO</button>
+  <ion-fab class="add-event">
+    <ion-fab-button (click)='openModalAddEvent()'>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
