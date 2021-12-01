@@ -1,11 +1,11 @@
 <ion-icon id="back" name="arrow-undo-outline" (click)="dismissModal()"></ion-icon>
 
-<div class="event-data" style="margin-top: 65px;">
+<div class="event-data -bc-p-2">
   <ion-list lines=none>
     <ion-item>
       <ion-input placeholder="Title" [(ngModel)]='title'></ion-input>
     </ion-item>
-    <ion-item-divider></ion-item-divider>
+    <ion-item-divider class='-bc-p-2'></ion-item-divider>
     <ion-item>
       <ion-label>Inicio</ion-label>
       <ion-datetime display-format="MMM DD, YYYY HH:mm" picker-format="MMM DD, YYYY HH:mm" [(ngModel)]='start'></ion-datetime>
@@ -15,5 +15,7 @@
       <ion-datetime display-format="MMM DD, YYYY HH:mm" picker-format="MMM DD, YYYY HH:mm" [(ngModel)]='end'></ion-datetime>
     </ion-item>
   </ion-list>
-  <button (click)="test()">Testios</button>
+
+  <div class="button" (click)='addEvent()'>AGREGAR EVENTO</div>
 </div>
+
