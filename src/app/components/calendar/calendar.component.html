@@ -6,19 +6,19 @@
 
   <mwl-calendar-month-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "month"'
     [viewDate]="viewDate"
-    [events]="events"
+    [events]="getEvents()"
     (eventClicked)='test($event)'
     (dayClicked)='dayClicked($event.day)'>
   </mwl-calendar-month-view>
   <mwl-calendar-week-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "week"'
     [viewDate]="viewDate"
-    [events]="events"
+    [events]="getEvents()"
    (eventClicked)='test($event)'
     (hourSegmentClicked)='dayClicked($event)'>
   </mwl-calendar-week-view>
   <mwl-calendar-day-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "day"'
     [viewDate]="viewDate"
-    [events]="events"
+    [events]="getEvents()"
     (eventClicked)='test($event)'
     (hourSegmentClicked)='dayClicked($event)'>
   </mwl-calendar-day-view>
