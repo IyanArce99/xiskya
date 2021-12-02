@@ -12,7 +12,7 @@ export class AddEventComponent implements OnInit {
   title: string;
   start: string = "2021-12-01T22:48:33.556Z";
   end: string = "2021-12-01T22:48:33.556Z";
-
+  allDay: boolean = false;
   constructor(public modalController: ModalController) { }
 
   ngOnInit() {
@@ -34,6 +34,7 @@ export class AddEventComponent implements OnInit {
       start: new Date(this.start),
       end: new Date(this.end),
       title: this.title,
+      allDay: this.allDay,
       cssClass: 'custom-event',
       color: {
         primary: '#488aff',
