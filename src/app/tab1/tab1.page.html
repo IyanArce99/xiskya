@@ -2,15 +2,13 @@
   <ion-header>
     <div class="header-top">
       <div class="input-icono">
-        <ion-icon class="-search" name="search"></ion-icon>
-        <input type="text" name="input" (change)='filter($event)'>
-        <ion-icon name="filter-outline"></ion-icon>
+        <ion-searchbar (ionChange)='filter($event)' placeholder="Filtrar"></ion-searchbar>
       </div>
     </div>
   </ion-header>
   
   <div class="container-persons">
-    <div *ngFor='let person of personsToShow' class="person-item -bc-p-2 -tc-white">
+    <div *ngFor='let person of personsToShow' class="person-item -bc-p-3 -tc-white">
       <img [src]='person.img' alt='logo' />
       
       <div class='block-start'>

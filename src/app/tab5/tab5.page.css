@@ -1,0 +1,32 @@
+.wrapper {
+  padding: 20px;
+}
+
+.wrapper .head-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper .head-box .picture {
+  margin-right: 20px;
+}
+
+.wrapper .head-box .picture img {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+.wrapper .head-box .personal-info .name {
+  font-size: 20px;
+  font-weight: bold;
+}
+/*# sourceMappingURL=tab5.page.css.map */

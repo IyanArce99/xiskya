@@ -1,0 +1,31 @@
+#back {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 36px;
+}
+
+.event-data {
+  margin: 65px 12px 12px 12px;
+  border-radius: 6px;
+  padding: 6px;
+  --ion-item-background:var(--principal-2);
+  --ion-item-color: white;
+}
+
+.event-data .button {
+  width: auto;
+  margin-top: 28px;
+  padding: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 4px;
+  background: white;
+  color: var(--principal-2);
+  font-weight: 600;
+}
+/*# sourceMappingURL=add-event.component.css.map */

@@ -1,1 +1,141 @@
-/* No CSS *//*# sourceMappingURL=tab1.page.css.map */
+ion-header::after {
+  height: 0px;
+}
+
+.input-icono {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-radius: 100px;
+  background-color: #ffff;
+  margin-left: 4px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.input-icono ion-icon {
+  margin-right: 8px;
+  font-size: 32px;
+  color: #333C4B;
+}
+
+.input-icono ion-icon .-search {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.input-icono input {
+  font-size: 0.9em;
+  border: none;
+  background-color: #ffff;
+  height: 32px;
+  color: #333C4B;
+  position: absolute;
+  left: 65px;
+  width: calc(100% - 130px);
+}
+
+.input-icono input:focus {
+  outline: none;
+}
+
+.header-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px;
+  position: fixed;
+  width: 100%;
+  top: 5px;
+}
+
+.header-top ion-searchbar {
+  padding-top: 8px;
+}
+
+.header-top .filters {
+  font-size: 25px;
+}
+
+.container-persons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 12px;
+  margin-top: 50px;
+  gap: 8px;
+}
+
+.container-persons .person-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.container-persons .person-item img {
+  width: 60px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.container-persons .person-item .block-start {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.container-persons .person-item .block-start .names {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.container-persons .person-item .block-start .city {
+  font-size: 16px;
+}
+
+.container-persons .person-item .block-end {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-size: 14px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+/*# sourceMappingURL=tab1.page.css.map */
