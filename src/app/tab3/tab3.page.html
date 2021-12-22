@@ -1,17 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      ¡Bienvenido!
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+<ion-content [fullscreen]="true" >
+  <div class="wrapper">
+    <h2>Filtrar por</h2>
+    <div class="filters">
+      <div class="filter mr-10 active">Noticias</div>
+      <div class="filter">Circulares</div>
+    </div>
+    <div class="notices">
+      <div *ngFor="let notice of notices" class="notice mt-20">
+        <div class="img">
+          <img src="/assets/blog/test.jpg" alt="">
+        </div>
+        <div class="elements">
+          <div class="title">{{ notice.title }}</div>
+          <div class="short_desc">{{ notice.short_desc }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

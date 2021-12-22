@@ -13,10 +13,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.wrapper .head-box .picture {
-  margin-right: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .wrapper .head-box .picture img {
@@ -28,5 +27,14 @@
 .wrapper .head-box .personal-info .name {
   font-size: 20px;
   font-weight: bold;
+}
+
+.wrapper .head-box .personal-info .numberCongregation {
+  text-align: right;
+  font-style: italic;
+}
+
+.wrapper .head-box .chat {
+  font-size: 25px;
 }
 /*# sourceMappingURL=tab5.page.css.map */
