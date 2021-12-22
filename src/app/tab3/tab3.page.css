@@ -1,3 +1,16 @@
+ion-toolbar {
+  --border-style: none;
+  --background: #758096;
+}
+
+ion-title {
+  color: white;
+}
+
+ion-icon {
+  color: white;
+}
+
 .wrapper {
   padding: 10px 20px;
 }
