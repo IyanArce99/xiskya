@@ -1,3 +1,7 @@
+ion-toolbar {
+    --border-style: none;
+    --background: #758096;
+}
 .wrapper {
     padding: 20px;
     .head-box {
@@ -27,4 +31,20 @@
             font-size: 25px;
         }
     }
+}
+
+.botonToolbar{
+    float: right;
+    background: none;
+}
+
+.tituloToolbar{
+    float: left;
+    color: white;
+}
+
+.fa-user-cog{
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
 }

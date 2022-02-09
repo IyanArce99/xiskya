@@ -5,17 +5,38 @@
     </div>
     <div class="form-box">
       <h1>Iniciar sesión</h1>
-      <form action="">
+      <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
         <div class="input-box">
           <i class="fas fa-user"></i>
-          <input type="text" name="" id="" placeholder="Usuario">
+          <input type="text" name="" id="" placeholder="Usuario" formControlName="usuario">
         </div>
+        <!--Mostramos errores para el correo-->
+        <span class="text-danger"
+          *ngIf="loginForm.get('usuario')?.hasError('required') && loginForm.get('usuario')?.touched">
+          El correo es requerido
+        </span>
+        <span class="text-danger"
+          *ngIf="loginForm.get('usuario')?.hasError('email') && loginForm.get('usuario')?.touched">
+          Formato de correo incorrecto
+        </span>
+
         <div class="input-box">
           <i class="fas fa-lock"></i>
-          <input type="password" name="" id="" placeholder="Contraseña">
+          <input type="password" name="" id="" placeholder="Contraseña" formControlName="password">
         </div>
-        <ion-button expand="block">Iniciar sesión</ion-button> 
+        <!--Mostramos errores para la contraseña-->
+        <span class="text-danger"
+          *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+          La contraseña es requerida
+        </span>
+
+        <div class="text-center">
+          <a routerLink="/recover-password" class="enlace">Recuperar contraseña</a>
+        </div>
+
+        <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</ion-button>
       </form>
     </div>
+    <p class="text-danger"><span *ngIf="errorComprobar">{{errorTexto}}</span></p>
   </div>
 </ion-content>
