@@ -23,7 +23,8 @@
     <div class="notices">
       <div *ngFor="let contenido of contenidoFiltrado" class="notice mt-20">
         <div class="img">
-          <img src="/assets/blog/test.jpg" alt="">
+          <img src="/assets/blog/test.jpg" alt="" *ngIf="contenido.imagePath == ''">
+          <img [src]="contenido.imagePath" alt="" *ngIf="contenido.imagePath!=''">
         </div>
         <div class="elements">
           <div class="title">{{ contenido.title | slice:0:20 }}</div>

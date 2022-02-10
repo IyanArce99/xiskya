@@ -2,27 +2,29 @@
   <ion-header>
     <div class="header-top">
       <div class="input-icono">
-        <ion-searchbar (ionChange)='filter($event)' placeholder="Filtrar"></ion-searchbar>
+        <ion-searchbar (ionChange)='filter($event)' placeholder="Filtrar por nombre"></ion-searchbar>
       </div>
     </div>
   </ion-header>
   
   <div class="container-persons">
-    <div *ngFor='let person of personsToShow' class="person-item -bc-p-3 -tc-white">
-      <img [src]='person.img' alt='logo' />
+    <div *ngFor='let usuario of usuariosFiltrados | paginate: { itemsPerPage: 7, currentPage: p }' class="person-item -bc-p-3 -tc-white">
+      <img src='https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png' alt='logo' />
       
       <div class='block-start'>
         <div class="names">
-          <span>{{person.name}}</span>
-          <span>{{person.surname}}</span>
+          <span>{{usuario.name}}</span>
+          <span>{{usuario.surname}}</span>
         </div>
-        <span class="city">{{person.city}}</span>
+        <span class="city">{{usuario.location}}</span>
       </div>
 
       <div class="block-end">
-        <span class="birth">{{person.dateBirth}}</span>
-        <span class="congregation">#{{person.numberCongregation}}</span>
+        <span class="birth">{{usuario.birthday}}</span>
+        <span class="congregation">#{{usuario.numberCongress}}</span>
       </div>
     </div>
+
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </ion-content>

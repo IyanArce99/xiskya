@@ -46,7 +46,7 @@
       <div class="row">
         <h4 class="text-center">Crear contenido</h4>
         <div class="col-10 offset-1">
-          <form [formGroup]="contenidoForm" (ngSubmit)="crearContenido()">
+          <form [formGroup]="contenidoForm" (ngSubmit)="guardarImagen()">
             <!--Input titulo-->
             <input type="text" class="form-control form-control-lg mb-2" placeholder="Titulo" formControlName="title">
             <span class="text-danger"
@@ -75,7 +75,7 @@
             </select>
             <!--Input imagenes-->
             <label class="custom-file-upload">
-              <input type="file" />
+              <input type="file" (change)="onUpload($event)" #inputImagen/>
               Subir imagen
             </label>
 
