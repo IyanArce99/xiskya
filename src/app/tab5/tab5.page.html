@@ -35,69 +35,20 @@
         </ion-card-header>
       
         <ion-card-content>
-          <div class="chat-box p-20">
-            <div class="image m-10">
-              <img [src]="me" alt="">
-            </div>
-            <div class="text-info">
-              <div class="nombre">Iyán Arcega</div>
-              <div class="last-message">Lorem ipsum dolor sit amet.</div>
+          <div *ngIf="messages.length > 0" class="messages">
+            <div *ngFor="let msg of messages" class="chat-box p-20">
+              <div class="image m-10">
+                <img [src]="me" alt="">
+              </div>
+              <div class="text-info">
+                <div class="nombre">{{msg.name}}</div>
+                <div class="last-message">{{msg.message}}</div>
+              </div>
             </div>
           </div>
-          <div class="chat-box p-20">
-           <div class="image m-10">
-             <img [src]="me" alt="">
-           </div>
-           <div class="text-info">
-             <div class="nombre">Iyán Arcega</div>
-             <div class="last-message">Lorem ipsum dolor sit amet.</div>
-           </div>
-         </div>
-         <div class="chat-box p-20">
-           <div class="image m-10">
-             <img [src]="me" alt="">
-           </div>
-           <div class="text-info">
-             <div class="nombre">Iyán Arcega</div>
-             <div class="last-message">Lorem ipsum dolor sit amet.</div>
-           </div>
-         </div>
-         <div class="chat-box p-20">
-           <div class="image m-10">
-             <img [src]="me" alt="">
-           </div>
-           <div class="text-info">
-             <div class="nombre">Iyán Arcega</div>
-             <div class="last-message">Lorem ipsum dolor sit amet.</div>
-           </div>
-         </div>
-         <div class="chat-box p-20">
-           <div class="image m-10">
-             <img [src]="me" alt="">
-           </div>
-           <div class="text-info">
-             <div class="nombre">Iyán Arcega</div>
-             <div class="last-message">Lorem ipsum dolor sit amet.</div>
-           </div>
-         </div>
-         <div class="chat-box p-20">
-           <div class="image m-10">
-             <img [src]="me" alt="">
-           </div>
-           <div class="text-info">
-             <div class="nombre">Iyán Arcega</div>
-             <div class="last-message">Lorem ipsum dolor sit amet.</div>
-           </div>
-         </div>
-         <div class="chat-box p-20">
-           <div class="image m-10">
-             <img [src]="me" alt="">
-           </div>
-           <div class="text-info">
-             <div class="nombre">Iyán Arcega</div>
-             <div class="last-message">Lorem ipsum dolor sit amet.</div>
-           </div>
-         </div>
+          <div *ngIf="messages.length === 0" class="no-msg">
+            ¡No tienes ningún mensaje!
+          </div>
         </ion-card-content>
       </ion-card>
     </div>
