@@ -13,16 +13,16 @@
 
 <ion-content [fullscreen]="true">
   <div class="wrapper">
-    <div class="filters">
-      <div class="filter mr-10" (click)="seleccionarApartado(0)" [ngClass]="{'active':selector === 0}">Ver contenido
-      </div>
+    <div class="filters mb-10">
+      <div class="filter mr-10" (click)="seleccionarApartado(0)" [ngClass]="{'active':selector === 0}">Ver contenido</div>
       <div class="filter" (click)="seleccionarApartado(1)" [ngClass]="{'active':selector === 1}">Crear contenido</div>
     </div>
 
+    <!--Div ver contenido-->
+    <!------------------------------------------------------------------------------------------------------------------>
     <div class="notices" *ngIf="selector === 0 && contenidoTotal">
-      <!--Noticia 1-->
-      <div *ngFor="let contenido of contenidoTotal">
-        <div class="notice mt-20">
+      <div *ngFor="let contenido of contenidoTotal | paginate: { itemsPerPage: 5, currentPage: p }">
+        <div class="notice mt-10">
           <div class="elements">
             <div class=" d-flex justify-content-between">
               <div class="title">{{contenido.title}}</div>
@@ -40,8 +40,11 @@
           <button class="boton"><i class="fas fa-edit editar"></i></button>
         </div>
       </div>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
 
+    <!--Div crear contenido-->
+    <!------------------------------------------------------------------------------------------------------------------>
     <div class="container mt-20" *ngIf="selector === 1">
       <div class="row">
         <h4 class="text-center">Crear contenido</h4>
@@ -75,9 +78,15 @@
             </select>
             <!--Input imagenes-->
             <label class="custom-file-upload">
-              <input type="file" (change)="onUpload($event)" #inputImagen/>
+              <input type="file" (change)="onUpload($event)"/>
               Subir imagen
             </label>
+
+            <!--Previsualizacion de la imagen-->
+            <div *ngIf="previsualizarImagen" class="my-2">
+              <img [src]="previsualizarImagen" alt="" class="previsualizar ml-2">
+              <button type="button" class="posicion" (click)="limpiarContenidoPrevisualizacion()"><i class="far fa-times-circle"></i></button>
+            </div>
 
             <button class="btn btn-primary mt-3 w-100" type="submit" [disabled]="!contenidoForm.valid">Subir
               contenido</button>

@@ -21,7 +21,7 @@
     </div>
 
     <div class="notices">
-      <div *ngFor="let contenido of contenidoFiltrado" class="notice mt-20">
+      <div *ngFor="let contenido of contenidoFiltrado | paginate: { itemsPerPage: 3, currentPage: p }" class="notice mt-20">
         <div class="img">
           <img src="/assets/blog/test.jpg" alt="" *ngIf="contenido.imagePath == ''">
           <img [src]="contenido.imagePath" alt="" *ngIf="contenido.imagePath!=''">
@@ -32,6 +32,6 @@
         </div>
       </div>
     </div>
-
   </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </ion-content>

@@ -19,8 +19,9 @@
       <div class="filter" (click)="seleccionarApartado(1)" [ngClass]="{'active':selector === 1}">Crear usuarios</div>
     </div>
 
+    <!--Div ver usuarios-->
+    <!------------------------------------------------------------------------------------------------------------------>
     <div class="mt-20" *ngIf="selector === 0 && usuarios">
-
       <table class="table text-center">
         <thead>
           <tr>
@@ -30,7 +31,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let usuario of usuarios">
+          <tr *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 15, currentPage: p }">
             <th scope="row">{{usuario.numberCongress}}</th>
             <td>{{usuario.name}}</td>
             <td>
@@ -40,13 +41,16 @@
           </tr>
         </tbody>
       </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
 
+    <!--Div crear usuarios-->
+    <!------------------------------------------------------------------------------------------------------------------>
     <div class="container mt-20" *ngIf="selector === 1">
       <div class="row">
         <h4 class="text-center">Crear usuario</h4>
         <div class="col-10 offset-1">
-          <form [formGroup]="agregarUsuariosForm" (ngSubmit)="agregarUsuario()">
+          <form [formGroup]="agregarUsuariosForm" (ngSubmit)="guardarImagen()">
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input correo electronico-->
             <input type="email" class="form-control form-control mb-2" placeholder="Correo electronico"
@@ -63,7 +67,14 @@
             </span>
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input contraseña-->
-            <input type="password" class="form-control form-control mb-2" placeholder="Contraseña" formControlName="password">
+            <!--<input type="password" class="form-control form-control mb-2" placeholder="Contraseña" formControlName="password">-->
+            <div class="input-group mb-2">
+              <input type="password" class="form-control" placeholder="password" formControlName="password" id="password">
+              <div class="input-group-text" (click)="comprobarPasswordTipo()">
+                <i class="fa-solid fa-eye" *ngIf="tipoPassword == true"></i>
+                <i class="fa-solid fa-eye-slash" *ngIf="tipoPassword == false"></i>
+              </div>
+            </div>
             <!--Comprobacion validacion de campo password rellenado-->
             <span class="text-danger"
               *ngIf="agregarUsuariosForm.get('password')?.hasError('required') && agregarUsuariosForm.get('password')?.touched">
@@ -121,11 +132,19 @@
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input imagenes-->
             <label class="custom-file-upload">
-              <input type="file" />
+              <input type="file" (change)="onUpload($event)" />
               Subir imagen
             </label>
 
-            <button class="btn btn-primary mt-3 w-100" type="submit" [disabled]="!agregarUsuariosForm.valid">Subir contenido</button>
+            <!--Previsualizacion de la imagen-->
+            <div *ngIf="previsualizarImagen" class="my-2">
+              <img [src]="previsualizarImagen" alt="" class="previsualizar ml-2">
+              <button type="button" class="posicion" (click)="limpiarContenidoPrevisualizacion()"><i
+                  class="far fa-times-circle"></i></button>
+            </div>
+
+            <button class="btn btn-primary mt-3 w-100" type="submit" [disabled]="!agregarUsuariosForm.valid">Subir
+              contenido</button>
           </form>
         </div>
       </div>

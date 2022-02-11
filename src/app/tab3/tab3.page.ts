@@ -9,6 +9,10 @@ import { DataService } from '../services/data.service';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  //paginacion
+  p: number = 1;
+
+  //Variables
   usuario: User;
   contenidoTotal: Array<Content> = [];
   selector:number = 0;
@@ -20,36 +24,6 @@ export class Tab3Page {
   ngOnInit() {
     this.getUsuario();
   }
-
-  /*separateNotices() {
-    this.notices = [
-      {
-        id: 1,
-        title: 'Noticia primera primera',
-        short_desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aut?...'
-      },
-      {
-        id: 1,
-        title: 'Noticia primera primera',
-        short_desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aut?...'
-      },
-      {
-        id: 1,
-        title: 'Noticia primera primera',
-        short_desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aut?...'
-      },
-      {
-        id: 1,
-        title: 'Noticia primera primera',
-        short_desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aut?...'
-      },
-      {
-        id: 1,
-        title: 'Noticia primera primera',
-        short_desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, aut?...'
-      },
-    ];
-  }*/
 
   getUsuario() {
     const dato = JSON.parse(localStorage.getItem('user-complete'));

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ContentPageRoutingModule } from './content-routing.module';
 
 import { ContentPage } from './content.page';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ContentPage } from './content.page';
     FormsModule,
     IonicModule,
     ContentPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   declarations: [ContentPage]
 })

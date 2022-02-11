@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { UsersPageRoutingModule } from './users-routing.module';
 
 import { UsersPage } from './users.page';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { UsersPage } from './users.page';
     FormsModule,
     IonicModule,
     UsersPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   declarations: [UsersPage]
 })

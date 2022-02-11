@@ -15,7 +15,8 @@
   <div class="wrapper" *ngIf="usuario">
     <div class="head-box">
       <div class="picture">
-        <img src="/assets/profile/icon.jpg" alt="">
+        <img src="/assets/profile/icon.jpg" alt="" *ngIf="usuario.imagePath == '' ">
+        <img [src]="usuario.imagePath" alt="" *ngIf="usuario.imagePath != '' ">
       </div>
       <div class="personal-info">
         <div class="name"> {{usuario.name | uppercase}} {{usuario.surname | uppercase}} </div>

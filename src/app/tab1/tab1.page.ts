@@ -31,7 +31,7 @@ export class Tab1Page implements OnInit{
         });
         this.usuariosFiltrados = this.usuarios;
       }, error => {
-
+        console.log(error);
       }
     )
   }
