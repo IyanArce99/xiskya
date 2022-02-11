@@ -105,4 +105,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  login() {
+    this._router.navigate(['/tabs/tab1']);
+  }
+
 }

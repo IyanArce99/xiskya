@@ -1,0 +1,36 @@
+ion-toolbar {
+    --border-style: none;
+    --background: #4c5361;
+}
+ion-title {
+    color: white;
+}
+ion-icon {
+    color: white;
+}
+
+.oracion {
+    padding: 40px 30px;
+    background: #A8A9AD;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+        .text {
+            color: white;
+            width: 90%;
+            display: flex;
+            align-items: center;
+        }
+        .next {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            ion-icon {
+                font-size: 25px;
+            }
+        }
+}
+
+.oracion:nth-child(even) {
+    background: #758096;
+}

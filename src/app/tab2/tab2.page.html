@@ -1,8 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Eventos</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="chatbubbles"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="title">Eventos</ion-title>
   </ion-toolbar>
 </ion-header>
+
+
+
 <ion-content [fullscreen]="true">
   <app-calendar (_addEvent)='presentModal($event)'></app-calendar>
 </ion-content>

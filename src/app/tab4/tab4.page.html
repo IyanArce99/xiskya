@@ -1,9 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Oraciones</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="chatbubbles"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="title">Oraciones</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-asas
+  <div *ngFor="let oracion of frases" class="oracion" (click)="presentModal(oracion)">
+    <div class="text">
+      {{ oracion.title }}
+    </div>
+    <div class="next">
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+    </div>
+  </div>
 </ion-content>
