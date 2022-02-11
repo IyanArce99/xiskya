@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "xiskya-aa031": {
+      "hosting": {
+        "app": [
+          "xiskya-aa031"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "xiskya-aa031"
+  }
+}

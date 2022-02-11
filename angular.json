@@ -34,6 +34,7 @@
             "styles": [
               "node_modules/angular-calendar/css/angular-calendar.css",
               "src/theme/variables.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/global.scss"
             ],
             "scripts": [],
@@ -171,6 +172,16 @@
               "cordovaBuildTarget": "app:ionic-cordova-build:production",
               "devServerTarget": "app:serve:production"
             }
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "app:build:production",
+            "firebaseProject": "xiskya-aa031",
+            "firebaseHostingSite": "xiskya-aa031"
           }
         }
       }

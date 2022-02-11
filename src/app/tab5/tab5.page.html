@@ -1,18 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Perfil</ion-title>
+    <div class="container">
+      <div class="row">
+        <div class="d-flex vertical-align-center col-12">
+          <ion-title class="tituloToolbar">Perfil</ion-title>
+          <button class="botonToolbar" routerLink="/admin"><i class="fas fa-user-cog" *ngIf="usuario && usuario.range == 1"></i></button>
+        </div>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
-  <div class="wrapper">
+  <div class="wrapper" *ngIf="usuario">
     <div class="head-box">
       <div class="picture">
-        <img src="/assets/profile/icon.jpg" alt="">
+        <img src="/assets/profile/icon.jpg" alt="" *ngIf="usuario.imagePath == '' ">
+        <img [src]="usuario.imagePath" alt="" *ngIf="usuario.imagePath != '' ">
       </div>
       <div class="personal-info">
-        <div class="name">Iyán Arcega</div>
-        <div class="location">Oviedo, Asturias</div>
-        <div class="numberCongregation">#123456</div>
+        <div class="name"> {{usuario.name | uppercase}} {{usuario.surname | uppercase}} </div>
+        <div class="location"> {{usuario.location}} </div>
+        <div class="numberCongregation"># {{usuario.numberCongress}} </div>
       </div>
       <div class="chat">
         <ion-icon name="chatbubbles-outline"></ion-icon>

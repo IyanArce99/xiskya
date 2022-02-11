@@ -1,0 +1,153 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="container">
+      <div class="row">
+        <div class="d-flex vertical-align-center col-12">
+          <ion-title class="tituloToolbar">Usuarios</ion-title>
+          <button class="botonToolbar" routerLink="/"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div class="filters">
+      <div class="filter mr-10" (click)="seleccionarApartado(0)" [ngClass]="{'active':selector === 0}">Ver usuarios
+      </div>
+      <div class="filter" (click)="seleccionarApartado(1)" [ngClass]="{'active':selector === 1}">Crear usuarios</div>
+    </div>
+
+    <!--Div ver usuarios-->
+    <!------------------------------------------------------------------------------------------------------------------>
+    <div class="mt-20" *ngIf="selector === 0 && usuarios">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 15, currentPage: p }">
+            <th scope="row">{{usuario.numberCongress}}</th>
+            <td>{{usuario.name}}</td>
+            <td>
+              <button class="boton"><i class="fas fa-edit editar"></i></button>
+              <button class="boton" (click)="borrarUsuario(usuario.id)"><i class="fas fa-trash borrar"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+
+    <!--Div crear usuarios-->
+    <!------------------------------------------------------------------------------------------------------------------>
+    <div class="container mt-20" *ngIf="selector === 1">
+      <div class="row">
+        <h4 class="text-center">Crear usuario</h4>
+        <div class="col-10 offset-1">
+          <form [formGroup]="agregarUsuariosForm" (ngSubmit)="guardarImagen()">
+            <!-------------------------------------------------------------------------------------------------------->
+            <!--Input correo electronico-->
+            <input type="email" class="form-control form-control mb-2" placeholder="Correo electronico"
+              formControlName="email">
+            <!--Comprobacion validacion de campo email rellenado-->
+            <span class="text-danger"
+              *ngIf="agregarUsuariosForm.get('email')?.hasError('required') && agregarUsuariosForm.get('email')?.touched">
+              El correo es requerido
+            </span>
+            <!--Comprobacion validacion de campo email con formato correcto-->
+            <span class="text-danger"
+              *ngIf="agregarUsuariosForm.get('email')?.hasError('email') && agregarUsuariosForm.get('email')?.touched">
+              Formato de correo incorrecto
+            </span>
+            <!-------------------------------------------------------------------------------------------------------->
+            <!--Input contraseña-->
+            <!--<input type="password" class="form-control form-control mb-2" placeholder="Contraseña" formControlName="password">-->
+            <div class="input-group mb-2">
+              <input type="password" class="form-control" placeholder="password" formControlName="password" id="password">
+              <div class="input-group-text" (click)="comprobarPasswordTipo()">
+                <i class="fa-solid fa-eye" *ngIf="tipoPassword == true"></i>
+                <i class="fa-solid fa-eye-slash" *ngIf="tipoPassword == false"></i>
+              </div>
+            </div>
+            <!--Comprobacion validacion de campo password rellenado-->
+            <span class="text-danger"
+              *ngIf="agregarUsuariosForm.get('password')?.hasError('required') && agregarUsuariosForm.get('password')?.touched">
+              La contraseña es requerida
+            </span>
+            <!--Comprobacion validacion de campo contraseña segura-->
+            <span class="text-danger"
+              *ngIf="agregarUsuariosForm.get('password')?.hasError('minLength') && agregarUsuariosForm.get('password')?.touched">
+              Contraseña débil, mínimo 6 caracteres
+            </span>
+            <!-------------------------------------------------------------------------------------------------------->
+            <!--Input nombre-->
+            <input type="text" class="form-control form-control mb-2" placeholder="Nombre" formControlName="name">
+            <!--Comprobacion validacion de campo name rellenado-->
+            <span class="text-danger"
+              *ngIf="agregarUsuariosForm.get('name')?.hasError('required') && agregarUsuariosForm.get('name')?.touched">
+              El nombre es requerido
+            </span>
+            <!-------------------------------------------------------------------------------------------------------->
+            <!--Input appellidos-->
+            <input type="text" class="form-control form-control mb-2" placeholder="Apellidos" formControlName="surname">
+            <!--Comprobacion validacion de campo surname rellenado-->
+            <span class="text-danger"
+              *ngIf="agregarUsuariosForm.get('surname')?.hasError('required') && agregarUsuariosForm.get('surname')?.touched">
+              Los apellidos son requeridos
+            </span>
+            <!-------------------------------------------------------------------------------------------------------->
+            <!--Input numero congreso-->
+            <input type="number" class="form-control form-control mb-2" placeholder="Numero congreso"
+              formControlName="numberCongress">
+            <!--Comprobacion validacion de campo numberCongress rellenado-->
+            <span class="text-danger"
+              *ngIf="agregarUsuariosForm.get('numberCongress')?.hasError('required') && agregarUsuariosForm.get('numberCongress')?.touched">
+              El numero de congreso es requerido
+            </span>
+            <!-------------------------------------------------------------------------------------------------------->
+            <!--Input localizacion-->
+            <input type="text" class="form-control form-control mb-2" placeholder="Localización"
+              formControlName="location">
+            <!-------------------------------------------------------------------------------------------------------->
+            <!--Input cumpleaños-->
+            <input type="date" class="form-control form-control mb-2" placeholder="Cumpleaños"
+              formControlName="birthday">
+            <!--Comprobacion validacion de campo cumpleañs rellenado-->
+            <span class="text-danger"
+              *ngIf="agregarUsuariosForm.get('birthday')?.hasError('required') && agregarUsuariosForm.get('birthday')?.touched">
+              El cumpleaños es requerido
+            </span>
+            <!-------------------------------------------------------------------------------------------------------->
+            <!--Select enum-->
+            <select class="form-control form-control mb-2" formControlName="range">
+              <option value="0">Usuario estandar</option>
+              <option value="1">Usuario administrador</option>
+            </select>
+            <!-------------------------------------------------------------------------------------------------------->
+            <!--Input imagenes-->
+            <label class="custom-file-upload">
+              <input type="file" (change)="onUpload($event)" />
+              Subir imagen
+            </label>
+
+            <!--Previsualizacion de la imagen-->
+            <div *ngIf="previsualizarImagen" class="my-2">
+              <img [src]="previsualizarImagen" alt="" class="previsualizar ml-2">
+              <button type="button" class="posicion" (click)="limpiarContenidoPrevisualizacion()"><i
+                  class="far fa-times-circle"></i></button>
+            </div>
+
+            <button class="btn btn-primary mt-3 w-100" type="submit" [disabled]="!agregarUsuariosForm.valid">Subir
+              contenido</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

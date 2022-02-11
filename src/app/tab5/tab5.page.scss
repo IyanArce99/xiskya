@@ -1,12 +1,6 @@
 ion-toolbar {
     --border-style: none;
-    --background: #4c5361;
-    ion-icon {
-        color: white;
-    }
-}
-ion-title {
-    color: white;
+    --background: #758096;
 }
 .wrapper {
     padding: 20px;
@@ -37,42 +31,20 @@ ion-title {
             font-size: 25px;
         }
     }
-    .revista {
-        ion-card {
-            margin-top: 50px;
-        }
-        ion-card-header {
-            background: var(--principal-1);
-            
-            ion-card-title, ion-card-subtitle {
-                color: white
-            }
-        
+}
 
-        }
-        ion-card-content {
-            padding: 20px;
-        }
-    }
-    .revista1 {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid var(--principal-3);
-        padding: 10px 0 ;
-        .text {
-            .fechapublic {
-                font-size: 14px;
-            }
-        }
-        .dowload {
-            button {
-                background: var(--principal-2);
-                color: white;
-                font-size: 16px;
-                padding: 10px 15px;
-                border-radius: 8px;
-            }
-        }
-    }
+.botonToolbar{
+    float: right;
+    background: none;
+}
+
+.tituloToolbar{
+    float: left;
+    color: white;
+}
+
+.fa-user-cog{
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
 }
