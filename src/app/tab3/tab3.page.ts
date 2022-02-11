@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { User } from '../modelos/User';
 import { Content } from '../modelos/Content';
 import { DataService } from '../services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
-export class Tab3Page {
+export class Tab3Page implements AfterViewInit{
   //paginacion
   p: number = 1;
 
@@ -19,15 +20,18 @@ export class Tab3Page {
   contenidoFiltrado: Array<Content> = [];
   //public notices: any;
   
-  constructor(private _dataService: DataService) { }
+  constructor(private _dataService:DataService, private _router:Router) { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.getUsuario();
   }
+  //-------------------------------------------------------------------------
 
   getUsuario() {
     const dato = JSON.parse(localStorage.getItem('user-complete'));
     this.usuario = dato;
+
+    console.log(this.usuario);
 
     this.getContenidos();
   }
