@@ -1,3 +1,14 @@
+ion-toolbar {
+    --border-style: none;
+    --background: #4c5361;
+}
+ion-title {
+    color: white;
+}
+ion-icon {
+    color: white;
+}
+
 #back{ 
     position: absolute;
     top: 12px;
