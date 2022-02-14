@@ -10,6 +10,25 @@ export class Tab5Page implements OnInit {
   usuario:User;
   public me: any;
   public you: any;
+  public messages: any = [
+    {
+      "name": "Iyán Arcega",
+      "message": "Lorem ipsum dolor sit amet"
+    },
+    {
+      "name": "Iyán Arcega",
+      "message": "Lorem ipsum dolor sit amet"
+    },
+    {
+      "name": "Iyán Arcega",
+      "message": "Lorem ipsum dolor sit amet"
+    },
+    {
+      "name": "Iyán Arcega",
+      "message": "Lorem ipsum dolor sit amet"
+    },
+  ];
+
   constructor() { }
 
   ngOnInit() {
