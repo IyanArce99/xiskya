@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="d-flex vertical-align-center col-12">
-          <ion-title class="tituloToolbar">Usuarios</ion-title>
+          <ion-title class="tituloToolbar">Actualizar usuario</ion-title>
           <button class="botonToolbar" routerLink="/"><i class="fas fa-sign-out-alt"></i></button>
         </div>
       </div>
@@ -13,45 +13,13 @@
 
 <ion-content [fullscreen]="true">
   <div class="wrapper">
-    <div class="filters">
-      <div class="filter mr-10" (click)="seleccionarApartado(0)" [ngClass]="{'active':selector === 0}">Ver usuarios
-      </div>
-      <div class="filter" (click)="seleccionarApartado(1)" [ngClass]="{'active':selector === 1}">Crear usuarios</div>
-    </div>
-
-    <!--Div ver usuarios-->
-    <!------------------------------------------------------------------------------------------------------------------>
-    <div class="mt-20" *ngIf="selector === 0 && usuarios">
-      <table class="table text-center">
-        <thead>
-          <tr>
-            <th scope="col">Codigo</th>
-            <th scope="col">Nombre</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 15, currentPage: p }">
-            <th scope="row">{{usuario.numberCongress}}</th>
-            <td>{{usuario.name}}</td>
-            <td>
-              <button class="boton" [routerLink]="['/admin/update-user', usuario.id]"><i class="fas fa-edit editar"></i></button>
-              <button class="boton" (click)="borrarUsuario(usuario.id)"><i class="fas fa-trash borrar"></i></button>
-              <button class="boton" (click)="enviarPasswordReset(usuario.email)"><i class="fas fa-key key"></i></button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </div>
-
     <!--Div crear usuarios-->
     <!------------------------------------------------------------------------------------------------------------------>
-    <div class="container mt-20" *ngIf="selector === 1">
+    <div class="container mt-20">
       <div class="row">
-        <h4 class="text-center">Crear usuario</h4>
+        <h4 class="text-center">Actualizar usuario</h4>
         <div class="col-10 offset-1">
-          <form [formGroup]="agregarUsuariosForm" (ngSubmit)="guardarImagen()">
+          <form [formGroup]="agregarUsuariosForm" (ngSubmit)="actualizarImagen()">
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input correo electronico-->
             <input type="email" class="form-control form-control mb-2" placeholder="Correo electronico"
@@ -113,7 +81,7 @@
             </span>
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input localizacion-->
-            <input type="text" class="form-control form-control mb-2" placeholder="Ciudad"
+            <input type="text" class="form-control form-control mb-2" placeholder="Localización"
               formControlName="location">
             <!--Comprobacion validacion de campo location rellenado-->
             <span class="text-danger"
@@ -125,7 +93,6 @@
               *ngIf="agregarUsuariosForm.get('location')?.hasError('maxlength') && agregarUsuariosForm.get('location')?.touched">
               Sobrecarga de caracteres, máximo 10 caracteres
             </span>
-
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input cumpleaños-->
             <input type="date" class="form-control form-control mb-2" placeholder="Cumpleaños"
@@ -144,15 +111,18 @@
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input imagenes-->
             <label class="custom-file-upload">
-              <input type="file" (change)="onUpload($event)" />
-              Subir imagen
+              <input type="file" (change)="onUpload($event)"/>
+              Cambiar imagen
             </label>
+
+            <!--Previsualizacion de la imagen ya añadida-->
+            <div class="my-2" *ngIf="imagenOriginal != '' && previsualizarImagen == ''">
+              <img [src]="agregarUsuariosForm.value.imagePath" alt="" class="previsualizar ml-2">
+            </div>
 
             <!--Previsualizacion de la imagen-->
             <div *ngIf="previsualizarImagen" class="my-2">
               <img [src]="previsualizarImagen" alt="" class="previsualizar ml-2">
-              <button type="button" class="posicion" (click)="limpiarContenidoPrevisualizacion()"><i
-                  class="far fa-times-circle"></i></button>
             </div>
 
             <button class="btn btn-primary mt-3 w-100" type="submit" [disabled]="!agregarUsuariosForm.valid">Subir

@@ -35,9 +35,19 @@ export class DataService {
     return this._firestore.collection('personas').snapshotChanges();
   }
 
+  //Ver contenido especifico
+  getUsuarioPorId(id:string):Observable<any>{
+    return this._firestore.collection('personas').doc(id).get();
+  }
+
   //Borrar usuario
   borrarUsuario(id:string): Promise<any>{
     return this._firestore.collection('personas').doc(id).delete();
+  }
+
+  //Editar usuario
+  editarUsuario(id:string, user:User): Promise<any>{
+    return this._firestore.collection('personas').doc(id).update(user);
   }
 
   //Metodos contenido
@@ -50,6 +60,11 @@ export class DataService {
   //Ver contenido usando snapshotchanges asi cambia en tiempo real
   getContenido(): Observable <any> {
     return this._firestore.collection('contenido').snapshotChanges();
+  }
+
+  //Ver contenido especifico
+  getContenidoPorId(id:string):Observable<any>{
+    return this._firestore.collection('contenido').doc(id).get();
   }
 
   //Borrar contenido

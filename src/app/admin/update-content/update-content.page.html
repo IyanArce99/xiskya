@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="d-flex vertical-align-center col-12">
-          <ion-title class="tituloToolbar">Contenido</ion-title>
+          <ion-title class="tituloToolbar">Actualizar contenido</ion-title>
           <button class="botonToolbar" routerLink="/"><i class="fas fa-sign-out-alt"></i></button>
         </div>
       </div>
@@ -13,43 +13,13 @@
 
 <ion-content [fullscreen]="true">
   <div class="wrapper">
-    <div class="filters mb-10">
-      <div class="filter mr-10" (click)="seleccionarApartado(0)" [ngClass]="{'active':selector === 0}">Ver contenido</div>
-      <div class="filter" (click)="seleccionarApartado(1)" [ngClass]="{'active':selector === 1}">Crear contenido</div>
-    </div>
-
-    <!--Div ver contenido-->
+    <!--Div actualizar contenido-->
     <!------------------------------------------------------------------------------------------------------------------>
-    <div class="notices" *ngIf="selector === 0 && contenidoTotal">
-      <div *ngFor="let contenido of contenidoTotal | paginate: { itemsPerPage: 5, currentPage: p }">
-        <div class="notice mt-10">
-          <div class="elements">
-            <div class=" d-flex justify-content-between">
-              <div class="title">{{contenido.title}}</div>
-              <div>
-                <span class="badge bg-dark" *ngIf="contenido.type==0">Circular</span>
-                <span class="badge bg-primary" *ngIf="contenido.type==1">Noticia</span>
-                <span class="badge bg-success" *ngIf="contenido.type==2">Revista</span>
-              </div>
-            </div>
-            <div class="short_desc">{{contenido.content | slice:0:80}}...</div>
-          </div>
-        </div>
-        <div class="mt-2">
-          <button class="boton"><i class="fas fa-trash borrar" (click)="borrarContenido(contenido.id)"></i></button>
-          <button class="boton"><i class="fas fa-edit editar" [routerLink]="['/admin/update-content', contenido.id]"></i></button>
-        </div>
-      </div>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </div>
-
-    <!--Div crear contenido-->
-    <!------------------------------------------------------------------------------------------------------------------>
-    <div class="container mt-20" *ngIf="selector === 1">
+    <div class="container mt-20">
       <div class="row">
-        <h4 class="text-center">Crear contenido</h4>
+        <h4 class="text-center">Actualizar contenido</h4>
         <div class="col-10 offset-1">
-          <form [formGroup]="contenidoForm" (ngSubmit)="guardarImagen()">
+          <form [formGroup]="contenidoForm">
             <!--Input titulo-->
             <input type="text" class="form-control form-control-lg mb-2" placeholder="Titulo" formControlName="title">
             <span class="text-danger"
@@ -71,26 +41,32 @@
               El contenido es requerido
             </span>
             <!--Select enum-->
-            <select class="form-control form-control-lg mb-2" formControlName="type" (change)="comprobarContenido(contenidoForm.value.type)">
+            <select class="form-control form-control-lg mb-2" formControlName="type">
               <option value="0">Circular</option>
               <option value="1">Noticia</option>
               <option value="2">Revista</option>
             </select>
             <!--Input PDF-->
             <label class="custom-file-upload mb-2" *ngIf="mostrarPdf == true">
-              <input type="file" (change)="onUploadPdf($event)" accept=".pdf"/>
-              Subir PDF
+              <input type="file" accept=".pdf"/>
+              Cambiar PDF
             </label>
             <!--Input imagenes-->
             <label class="custom-file-upload">
-              <input type="file" (change)="onUpload($event)"/>
-              Subir imagen
+              <input type="file"/>
+              Cambiar imagen
             </label>
 
-            <!--Previsualizacion de la imagen-->
+            <!--Previsualizacion de la imagen ya añadida-->
+            <div class="my-2">
+              <img [src]="contenidoForm.value.imagePath" alt="" class="previsualizar ml-2">
+              <button type="button" class="posicion"><i class="far fa-times-circle"></i></button>
+            </div>
+
+            <!--Previsualizacion de la imagen a añadir-->
             <div *ngIf="previsualizarImagen" class="my-2">
               <img [src]="previsualizarImagen" alt="" class="previsualizar ml-2">
-              <button type="button" class="posicion" (click)="limpiarContenidoPrevisualizacion()"><i class="far fa-times-circle"></i></button>
+              <button type="button" class="posicion"><i class="far fa-times-circle"></i></button>
             </div>
 
             <button class="btn btn-primary mt-3 w-100" type="submit" [disabled]="!contenidoForm.valid">Subir

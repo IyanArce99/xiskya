@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { finalize } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ToastController } from '@ionic/angular';
+import { Message } from 'src/app/modelos/Message';
 
 @Component({
   selector: 'app-users',
@@ -24,7 +25,8 @@ export class UsersPage implements OnInit, OnDestroy {
   agregarUsuariosForm: FormGroup;
   usuarios:Array<User> = [];
   usuario:User;
-  tipoPassword:boolean;
+  tipoPassword:boolean=false;
+  messages:Array<Message> = [];
 
   //Variables para imagen
   uploadPercent: Observable<number>;
@@ -41,10 +43,10 @@ export class UsersPage implements OnInit, OnDestroy {
       name: ['', Validators.required],
       surname: ['', Validators.required],
       numberCongress: [0, Validators.required],
-      location: ['', Validators.required],
+      location: ['', [Validators.required, Validators.maxLength(10)]],
       birthday: ['', Validators.required],
       imagePath: [''],
-      range: [0, Validators.required]
+      range: [0, Validators.required],
     }), this.tipoPassword =true;
   }
 
@@ -69,8 +71,23 @@ export class UsersPage implements OnInit, OnDestroy {
     }else{
       passwordCambio.type = 'password';
     }
-    
   }
+
+  enviarPasswordReset(correo:string){
+    //usamos el metodo para resetear la password
+    this.afAuth.sendPasswordResetEmail(correo).then(() => {
+      let toast = this.toastCtrl.create({
+        message: 'Correo de recuperacion enviado correctamente',
+        duration: 1500,
+        position: 'bottom',
+        color: 'success'
+      }).then((data) => {
+        data.present();
+      })
+    }).catch(error => {
+      console.log(error);
+    });
+  } 
 
   //metodo para guardar la imagen
   guardarImagen() {
@@ -114,29 +131,21 @@ export class UsersPage implements OnInit, OnDestroy {
 
     this.usuario = {
       email: email,
+      password: password,
       name: name,
       surname: surname,
       numberCongress: numberCongress,
       location: location,
       birthday: birthday,
       imagePath: imagePath,
-      range: range
+      range: range,
+      messages: this.messages
     }
-
 
     this.afAuth.createUserWithEmailAndPassword(email, password).then(result => {
       this.agregarUsuario();
     }).catch(error => {
-      //console.log(error);
-
-      let toast = this.toastCtrl.create({
-        message: 'Correo en uso actualmente',
-        duration: 5000,
-        position: 'bottom',
-        color: 'danger'
-      }).then((data) => {
-        data.present();
-      }) 
+      console.log(error);
     })
 
   }

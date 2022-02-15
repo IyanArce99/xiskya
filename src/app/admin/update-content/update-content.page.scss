@@ -31,6 +31,26 @@ ion-icon {
             background: #758096;
         }
     }
+
+    .notices {
+        display: flex;
+        flex-direction: column;
+
+        .notice {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            padding: 10px;
+            border-radius: 10px;
+            .elements {
+                .title {
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+                .short_desc {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
 }
 
 .no-scroll .scroll-content{
@@ -94,13 +114,4 @@ input[type="file"] {
 .fa-times-circle{
     color: red;
     font-weight: 800;
-}
-
-.errorToast{
-    background-color: red;
-    color: white;
-}
-
-.key{
-    color: black;
 }

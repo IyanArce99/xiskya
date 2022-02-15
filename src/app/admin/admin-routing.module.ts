@@ -17,6 +17,14 @@ const routes: Routes = [
         loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
       },
       {
+        path: 'update-content/:id',
+        loadChildren: () => import('./update-content/update-content.module').then( m => m.UpdateContentPageModule)
+      },
+      {
+        path: 'update-user/:id',
+        loadChildren: () => import('./update-user/update-user.module').then( m => m.UpdateUserPageModule)
+      },
+      {
         path: '',
         redirectTo: '/admin/content',
         pathMatch: 'full'
