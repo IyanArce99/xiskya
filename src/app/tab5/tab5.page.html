@@ -2,9 +2,10 @@
   <ion-toolbar>
     <div class="container">
       <div class="row">
-        <div class="d-flex vertical-align-center col-12">
+        <div class="d-flex align-self-center col-12">
           <ion-title class="tituloToolbar">Perfil</ion-title>
-          <button class="botonToolbar" routerLink="/admin"><i class="fas fa-user-cog" *ngIf="usuario && usuario.range == 1"></i></button>
+          <button class="botonToolbar" routerLink="/admin"><i class="fas fa-user-cog"
+              *ngIf="usuario && usuario.range == 1"></i></button>
         </div>
       </div>
     </div>
@@ -13,6 +14,7 @@
 
 <ion-content>
   <div class="wrapper" *ngIf="usuario">
+    <!--Contenedor perfil-->
     <div class="head-box">
       <div class="picture">
         <img src="/assets/profile/icon.jpg" alt="" *ngIf="usuario.imagePath == '' ">
@@ -20,33 +22,68 @@
       </div>
       <div class="personal-info">
         <div class="name"> {{usuario.name | uppercase}} {{usuario.surname | uppercase}} </div>
-        <div class="location"> {{usuario.location}} </div>
-        <div class="numberCongregation"># {{usuario.numberCongress}} </div>
+        <!--Location-->
+        <!------------------------------------------------------------------------------------------------------->
+        <div class="location">
+          <!--En caso de no editarse-->
+          <div *ngIf="editarLocationType == false">
+            {{usuario.location | titlecase}}
+            <button class="botonIcono" (click)="cambiarEditLocation()"><i class="fas fa-edit edit"></i></button>
+          </div>
+
+          <!--En caso de editarse-->
+          <form *ngIf="editarLocationType == true" class="mb-2" [formGroup]="usuarioForm" (ngSubmit)="editLocation()">
+            <div class="d-flex">
+              <input type="text" class="form-control-sm form-control" formControlName="location">
+              <button class="botonIcono" type="submit"><i class="fas fa-check check"></i></button>
+              <button class="botonIcono" (click)="cambiarEditLocation()"><i class="fas fa-times cancel"></i></button>
+            </div>
+          </form>
+        </div>
+
+        <!--Number congress-->
+        <!------------------------------------------------------------------------------------------------------->
+        <div class="numberCongregation">
+          <!--En caso de no editarse-->
+          <div *ngIf="editarNumberCongressType == false">
+            # {{usuario.numberCongress}}
+            <button class="botonIcono" (click)="cambiarEditNumberCongress()"><i class="fas fa-edit edit"></i></button>
+          </div>
+          <!--En caso de editarse-->
+          <form *ngIf="editarNumberCongressType == true" class="mb-2" [formGroup]="usuarioForm" (ngSubmit)="editNumberCongress()">
+            <div class="d-flex">
+              <input type="text" class="form-control-sm form-control" formControlName="numberCongress">
+              <button class="botonIcono" type="submit"><i class="fas fa-check check"></i></button>
+              <button class="botonIcono" (click)="cambiarEditNumberCongress()"><i class="fas fa-times cancel"></i></button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div class="chat">
+      <!--<div class="chat">
         <ion-icon name="chatbubbles-outline"></ion-icon>
-      </div>
+      </div>-->
     </div>
+    <!--Contenedor mensajes-->
     <div class="revista">
       <ion-card>
         <ion-card-header>
           <ion-card-title>Mensajes</ion-card-title>
           <ion-card-subtitle>Te mostramos todos tus mensajes</ion-card-subtitle>
         </ion-card-header>
-      
+
         <ion-card-content>
-          <div *ngIf="messages.length > 0" class="messages">
-            <div *ngFor="let msg of messages" class="chat-box p-20">
+          <div *ngIf="usuario.messages.length > 0" class="messages">
+            <div *ngFor="let msg of usuario.messages" class="chat-box p-20">
               <div class="image m-10">
-                <img [src]="you" alt="">
+                <img [src]="msg.imagePath" alt="">
               </div>
               <div class="text-info">
                 <div class="nombre">{{msg.name}}</div>
-                <div class="last-message">{{msg.message}}</div>
+                <div class="last-message">{{msg.text}}</div>
               </div>
             </div>
           </div>
-          <div *ngIf="messages.length === 0" class="no-msg">
+          <div *ngIf="usuario.messages.length === 0" class="no-msg">
             ¡No tienes ningún mensaje!
           </div>
         </ion-card-content>

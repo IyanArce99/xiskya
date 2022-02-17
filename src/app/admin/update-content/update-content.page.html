@@ -19,7 +19,7 @@
       <div class="row">
         <h4 class="text-center">Actualizar contenido</h4>
         <div class="col-10 offset-1">
-          <form [formGroup]="contenidoForm">
+          <form [formGroup]="contenidoForm" (ngSubmit)="actualizarImagen()">
             <!--Input titulo-->
             <input type="text" class="form-control form-control-lg mb-2" placeholder="Titulo" formControlName="title">
             <span class="text-danger"
@@ -41,32 +41,36 @@
               El contenido es requerido
             </span>
             <!--Select enum-->
-            <select class="form-control form-control-lg mb-2" formControlName="type">
+            <select class="form-control form-control-lg mb-2" formControlName="type" (change)="mostrarBotonPdf()">
               <option value="0">Circular</option>
               <option value="1">Noticia</option>
               <option value="2">Revista</option>
             </select>
             <!--Input PDF-->
-            <label class="custom-file-upload mb-2" *ngIf="mostrarPdf == true">
-              <input type="file" accept=".pdf"/>
-              Cambiar PDF
-            </label>
+            <div class="form-group mb-2" *ngIf="mostrarPdf == true">
+              <label for="inputFile">Cambiar Pdf</label>
+              <input type="file" class="form-control-file" id="inputFile" (change)="onUploadPdf($event)" accept=".pdf">
+
+              <div *ngIf="contenidoForm.value.pdfPath != ''" class="mt-10">
+                <span>
+                  Este es su pdf actual: <a [href]="contenidoForm.value.pdfPath" target="_blank">Pdf</a>
+                </span>
+              </div>
+            </div>
             <!--Input imagenes-->
             <label class="custom-file-upload">
-              <input type="file"/>
+              <input type="file" (change)="onUpload($event)" class="imagenInput" />
               Cambiar imagen
             </label>
 
             <!--Previsualizacion de la imagen ya añadida-->
-            <div class="my-2">
+            <div class="my-2" *ngIf="!previsualizarImagen">
               <img [src]="contenidoForm.value.imagePath" alt="" class="previsualizar ml-2">
-              <button type="button" class="posicion"><i class="far fa-times-circle"></i></button>
             </div>
 
             <!--Previsualizacion de la imagen a añadir-->
             <div *ngIf="previsualizarImagen" class="my-2">
               <img [src]="previsualizarImagen" alt="" class="previsualizar ml-2">
-              <button type="button" class="posicion"><i class="far fa-times-circle"></i></button>
             </div>
 
             <button class="btn btn-primary mt-3 w-100" type="submit" [disabled]="!contenidoForm.valid">Subir

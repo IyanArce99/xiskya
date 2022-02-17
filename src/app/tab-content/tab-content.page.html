@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="container">
+      <div class="row">
+        <div class="d-flex col-12">
+          <button class="boton mt-2" routerLink="/tabs/tab3"><i class="fa-solid fa-angles-left icono"></i></button>
+          <ion-title>Contenido</ion-title>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="contenido">
+    <img [src]="contenido.imagePath" alt="" class="tamañoImagen">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="textoTitulo text-center"> {{contenido.title}} </h2>
+          <h4 class="textoSubtitulo text-center"> {{contenido.subtitle}} </h4>
+        </div>
+        <div class="col-12">
+          <p class="parrafo"> {{contenido.content}} </p>
+        </div>
+        <div class="col-12" *ngIf="contenido.pdfPath != ''">
+          <p class="parrafo">Para más información consulte 
+            <a href="contenido.pdfPath"> 
+              <span class="spanEnlace"> aqui. </span> 
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

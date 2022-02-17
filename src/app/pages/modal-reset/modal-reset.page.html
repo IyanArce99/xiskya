@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="container">
+      <div class="row">
+        <div class="d-flex vertical-align-center col-12">
+          <ion-title class="tituloToolbar">Nueva contraseña</ion-title>
+          <button class="botonToolbar" (click)="cerrarModal()">Salir</button>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenedor">
+    <h4 class="text-center">¿ Desea cambiar la contraseña de
+      <span class="textoEmail">
+        {{email}} ?
+      </span>
+    </h4>
+    <p class="text-center">En caso de querer enviar un correo para que el usuario modifique su contraseña, pulse en el botón que se muestra a continuacion</p>
+    <button class="btn-correo" (click)="enviarPasswordReset()">Enviar correo</button>
+  </div>
+</ion-content>

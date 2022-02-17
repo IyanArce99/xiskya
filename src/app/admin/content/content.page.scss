@@ -70,10 +70,6 @@ ion-icon {
     color:green;
 }
 
-input[type="file"] {
-    display: none;
-}
-
 .custom-file-upload {
     border: 1px solid #ccc;
     background-color: white;
@@ -114,4 +110,8 @@ input[type="file"] {
 .fa-times-circle{
     color: red;
     font-weight: 800;
+}
+
+.imagenInput{
+    display: none;
 }

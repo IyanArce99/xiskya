@@ -1,0 +1,49 @@
+ion-toolbar {
+    --border-style: none;
+    --background: #758096;
+}
+
+ion-title {
+    color: white;
+}
+
+.botonToolbar{
+    float: right;
+    background: none;
+    font-size: 20px;
+    color: white;
+}
+
+.tituloToolbar{
+    float: left;
+}
+
+.btn-ingresar{
+    width: 195px;
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+p{
+    color: gray;
+}
+
+.textoEmail{
+    font-weight: bold;
+}
+
+.btn-correo{
+    padding: 10px;
+    color: white;
+    background-color: #758096;
+    width: 100%;
+    border-radius: 5px;
+}

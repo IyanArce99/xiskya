@@ -77,13 +77,13 @@
               <option value="2">Revista</option>
             </select>
             <!--Input PDF-->
-            <label class="custom-file-upload mb-2" *ngIf="mostrarPdf == true">
-              <input type="file" (change)="onUploadPdf($event)" accept=".pdf"/>
-              Subir PDF
-            </label>
+            <div class="form-group mb-2" *ngIf="mostrarPdf == true">
+              <label for="inputFile">Subir Pdf</label>
+              <input type="file" class="form-control-file" id="inputFile" (change)="onUploadPdf($event)" accept=".pdf">
+            </div>
             <!--Input imagenes-->
             <label class="custom-file-upload">
-              <input type="file" (change)="onUpload($event)"/>
+              <input type="file" (change)="onUpload($event)" class="imagenInput"/>
               Subir imagen
             </label>
 

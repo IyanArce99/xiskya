@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { User } from 'src/app/modelos/User';
@@ -9,6 +9,8 @@ import { finalize } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ToastController } from '@ionic/angular';
 import { Message } from 'src/app/modelos/Message';
+import { ModalController } from '@ionic/angular';
+import { ModalResetPage } from '../../pages/modal-reset/modal-reset.page';
 
 @Component({
   selector: 'app-users',
@@ -36,7 +38,7 @@ export class UsersPage implements OnInit, OnDestroy {
   previsualizarImagen:string;
 
   constructor(private fb: FormBuilder, private _dataService: DataService, private afAuth: AngularFireAuth, private storage: AngularFireStorage, 
-    private sanitizer: DomSanitizer, private toastCtrl: ToastController) {
+    private sanitizer: DomSanitizer, private toastCtrl: ToastController, private modalController:ModalController) {
     this.agregarUsuariosForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -73,21 +75,18 @@ export class UsersPage implements OnInit, OnDestroy {
     }
   }
 
-  enviarPasswordReset(correo:string){
-    //usamos el metodo para resetear la password
-    this.afAuth.sendPasswordResetEmail(correo).then(() => {
-      let toast = this.toastCtrl.create({
-        message: 'Correo de recuperacion enviado correctamente',
-        duration: 1500,
-        position: 'bottom',
-        color: 'success'
-      }).then((data) => {
-        data.present();
-      })
-    }).catch(error => {
-      console.log(error);
+  //modal reset
+  async openModal(email:any){
+    const modal = await this.modalController.create({
+      component: ModalResetPage,
+      cssClass: 'modalCustomizado',
+      componentProps: {
+        'email': email,
+      }
     });
-  } 
+
+    return await modal.present();
+  }
 
   //metodo para guardar la imagen
   guardarImagen() {
@@ -198,7 +197,7 @@ export class UsersPage implements OnInit, OnDestroy {
   borrarUsuario(codigo:string){
     this._dataService.borrarUsuario(codigo).then(data => {
     }).catch(error =>{
-      console.log("entra");
+      console.log(error);
     })
   }
 

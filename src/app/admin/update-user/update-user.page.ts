@@ -37,7 +37,7 @@ export class UpdateUserPage implements OnInit {
     this.agregarUsuariosForm = this.fb.group({
       email: [{value: '', disabled: true}, [Validators.required, Validators.email]],
       password: [{value: '', disabled: true}, [Validators.required, Validators.minLength(6)]],
-      name: ['', Validators.required],
+      name: [{value: '', disabled: true}, Validators.required],
       surname: ['', Validators.required],
       numberCongress: [0, Validators.required],
       location: ['', [Validators.required, Validators.maxLength(10)]],

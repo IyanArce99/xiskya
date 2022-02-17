@@ -70,7 +70,7 @@ ion-icon {
     color:green;
 }
 
-input[type="file"] {
+.imagenInput{
     display: none;
 }
 
@@ -114,4 +114,8 @@ input[type="file"] {
 .fa-times-circle{
     color: red;
     font-weight: 800;
+}
+
+span{
+    font-size: large;
 }

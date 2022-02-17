@@ -37,7 +37,15 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
-  }
+  },
+  {
+    path: 'modal-reset',
+    loadChildren: () => import('./pages/modal-reset/modal-reset.module').then( m => m.ModalResetPageModule)
+  },
+  {
+    path: 'modal-mensajes',
+    loadChildren: () => import('./pages/modal-mensajes/modal-mensajes.module').then( m => m.ModalMensajesPageModule)
+  },
 
 
 ];

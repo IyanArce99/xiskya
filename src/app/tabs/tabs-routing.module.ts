@@ -28,6 +28,10 @@ const routes: Routes = [
         loadChildren: () => import('../tab5/tab5.module').then(m => m.Tab5PageModule)
       },
       {
+        path: 'tab-content/:id',
+        loadChildren: () => import('../tab-content/tab-content.module').then( m => m.TabContentPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab3',
         pathMatch: 'full'

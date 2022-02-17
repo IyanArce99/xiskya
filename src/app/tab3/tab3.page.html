@@ -21,7 +21,7 @@
     
       <div class="notices">
         <div *ngFor="let contenido of contenidoFiltrado | paginate: { itemsPerPage: 3, currentPage: p }"
-          class="notice mt-20">
+          class="notice mt-20" [routerLink]="['/tabs/tab-content', contenido.id]">
           <div class="img">
             <img src="/assets/blog/test.jpg" alt="" *ngIf="contenido.imagePath == ''">
             <img [src]="contenido.imagePath" alt="" *ngIf="contenido.imagePath!=''">

@@ -1,28 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../modelos/User';
 import { DataService } from '../services/data.service';
+import { ModalMensajesPage } from '../pages/modal-mensajes/modal-mensajes.page';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page implements OnInit{
+export class Tab1Page implements OnInit {
   p: number = 1;
-  usuarios:Array<User>;
-  usuariosFiltrados:Array<User> = [];
+  usuarios: Array<User>;
+  usuariosFiltrados: Array<User> = [];
   filterValue: string = '';
 
-  constructor(private _dataService:DataService) {}
+  constructor(private _dataService: DataService, private modalController: ModalController) { }
 
   ngOnInit(): void {
     this.recogerUsuarios();
   }
 
-  recogerUsuarios(){
-    this.usuarios = [];
+  recogerUsuarios() {
     this._dataService.getUsuarios().subscribe(
       result => {
+        this.usuarios = [];
+        this.usuariosFiltrados = [];
         result.forEach(element => {
           this.usuarios.push({
             id: element.payload.doc.id,
@@ -44,5 +47,18 @@ export class Tab1Page implements OnInit{
 
       return nameComplete.indexOf(e.target.value.toLowerCase()) >= 0;
     });
+  }
+
+  //modal reset
+  async abrirModalMensajes(usuario: User) {
+    const modal = await this.modalController.create({
+      component: ModalMensajesPage,
+      cssClass: 'modalCustomizado',
+      componentProps: {
+        'usuario': usuario,
+      }
+    });
+
+    return await modal.present();
   }
 }

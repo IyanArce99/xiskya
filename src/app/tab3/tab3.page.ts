@@ -31,8 +31,6 @@ export class Tab3Page implements AfterViewInit{
     const dato = JSON.parse(localStorage.getItem('user-complete'));
     this.usuario = dato;
 
-    console.log(this.usuario);
-
     this.getContenidos();
   }
 

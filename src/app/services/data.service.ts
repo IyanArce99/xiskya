@@ -23,7 +23,11 @@ export class DataService {
     return this.events;
   }
 
-  //Metodos usuario
+  /*
+  ---------------------------------------------------------------------
+  Metodos usuario
+  ---------------------------------------------------------------------
+  */
 
   //Agregar usuario
   crearUsuario(user:User): Promise <any>{
@@ -50,12 +54,22 @@ export class DataService {
     return this._firestore.collection('personas').doc(id).update(user);
   }
 
-  //Metodos contenido
+  /*
+  ---------------------------------------------------------------------
+  Metodos contenido
+  ---------------------------------------------------------------------
+  */
 
   //Agregar contenido
   crearContenido(contenido:Content): Promise <any>{
     return this._firestore.collection('contenido').add(contenido);
   }
+
+  //Editar contenido
+  editarContenido(id:string, contenido:Content): Promise<any>{
+    return this._firestore.collection('contenido').doc(id).update(contenido);
+  }
+
 
   //Ver contenido usando snapshotchanges asi cambia en tiempo real
   getContenido(): Observable <any> {

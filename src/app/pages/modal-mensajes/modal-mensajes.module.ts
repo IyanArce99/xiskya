@@ -4,18 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { Tab5PageRoutingModule } from './tab5-routing.module';
+import { ModalMensajesPageRoutingModule } from './modal-mensajes-routing.module';
 
-import { Tab5Page } from './tab5.page';
+import { ModalMensajesPage } from './modal-mensajes.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    Tab5PageRoutingModule,
+    ModalMensajesPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [Tab5Page]
+  declarations: [ModalMensajesPage]
 })
-export class Tab5PageModule {}
+export class ModalMensajesPageModule {}

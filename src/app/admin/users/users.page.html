@@ -37,7 +37,7 @@
             <td>
               <button class="boton" [routerLink]="['/admin/update-user', usuario.id]"><i class="fas fa-edit editar"></i></button>
               <button class="boton" (click)="borrarUsuario(usuario.id)"><i class="fas fa-trash borrar"></i></button>
-              <button class="boton" (click)="enviarPasswordReset(usuario.email)"><i class="fas fa-key key"></i></button>
+              <button class="boton" (click)="openModal(usuario.email)"><i class="fas fa-key key"></i></button>
             </td>
           </tr>
         </tbody>

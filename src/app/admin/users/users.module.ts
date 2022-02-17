@@ -8,6 +8,7 @@ import { UsersPageRoutingModule } from './users-routing.module';
 
 import { UsersPage } from './users.page';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ModalResetPage } from '../../pages/modal-reset/modal-reset.page';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     NgxPaginationModule
   ],
-  declarations: [UsersPage]
+  declarations: [UsersPage, ModalResetPage],
+  entryComponents: [ModalResetPage]
 })
 export class UsersPageModule {}
