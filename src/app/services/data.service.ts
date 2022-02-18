@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { User } from '../modelos/User';
 import { Observable } from 'rxjs';
 import { Content } from '../modelos/Content';
+import { Events } from '../modelos/Event';
 
 @Injectable({
   providedIn: 'root'
@@ -84,5 +85,31 @@ export class DataService {
   //Borrar contenido
   borrarContenido(id:string): Promise<any>{
     return this._firestore.collection('contenido').doc(id).delete();
+  }
+
+  /*
+  ---------------------------------------------------------------------
+  Metodos eventos calendario
+  ---------------------------------------------------------------------
+  */
+
+  //Agregar evento
+  crearEvento(event:Events): Promise <any>{
+    return this._firestore.collection('eventos').add(event);
+  }
+
+  //Ver evento usando snapshotchanges asi cambia en tiempo real
+  getEventos(): Observable <any> {
+    return this._firestore.collection('eventos').snapshotChanges();
+  }
+
+  //Ver evento especifico
+  getEventoPorId(id:string):Observable<any>{
+    return this._firestore.collection('eventos').doc(id).get();
+  }
+
+  //Borrar evento
+  borrarEvento(id:string): Promise<any>{
+    return this._firestore.collection('eventos').doc(id).delete();
   }
 }

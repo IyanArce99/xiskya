@@ -2,7 +2,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
@@ -21,7 +21,8 @@ import { AddEventComponent } from '../components/add-event/add-event.component';
     FormsModule,
     ExploreContainerComponentModule,
     Tab2PageRoutingModule,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    ReactiveFormsModule
   ],
   declarations: [Tab2Page, CalendarComponent, AddEventComponent]
 })

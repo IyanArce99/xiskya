@@ -30,9 +30,11 @@ export class CalendarComponent implements OnInit {
     DataService.dateSelected = e.date.toISOString();
     this.openModalAddEvent(e);
   }
+
   getEvents(): CalendarEvent[] {
     return DataService.events;
   }
+  
   test(data) : void {
     console.log("Click: ", data.event);
   }

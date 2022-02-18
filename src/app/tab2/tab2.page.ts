@@ -4,6 +4,8 @@ import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMo
 import { CalendarEventTimesChangedEvent, CalendarEvent } from 'angular-calendar';
 import { ModalController } from '@ionic/angular';
 import { AddEventComponent } from '../components/add-event/add-event.component';
+import { Events } from '../modelos/Event';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-tab2',
@@ -11,6 +13,8 @@ import { AddEventComponent } from '../components/add-event/add-event.component';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  //eventosTotales
+  eventosCalendario: Array<Events>;
 
   viewDate: Date = new Date();
   view: string = 'week';
@@ -19,7 +23,7 @@ export class Tab2Page {
 
   refresh: Subject<any> = new Subject();
 
-  events: CalendarEvent[] = [
+  /*events: CalendarEvent[] = [
     {
       start: addHours(startOfDay(new Date()), 7),
       end: addHours(startOfDay(new Date()), 9),
@@ -34,26 +38,61 @@ export class Tab2Page {
         afterEnd: true
       },
       draggable: true
-    },
-    {
-      start: addHours(startOfDay(new Date()), 10),
-      end: addHours(startOfDay(new Date()), 12),
-      title: 'Second Event',
-      cssClass: 'custom-event',
-      color: {
-        primary: '#488aff',
-        secondary: '#bbd0f5'
-      },
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
     }
-  ]
+  ]*/
 
-  constructor(public modalController: ModalController) {}
+  events: CalendarEvent[] = [];
 
+  constructor(public modalController: ModalController, private _dataService: DataService) { }
+
+  //mostrarEventos
+  getEvents() {
+    this._dataService.getEventos().subscribe(
+      result => {
+        this.eventosCalendario = [];
+        result.forEach(element => {
+          this.eventosCalendario.push({
+            id: element.payload.doc.id,
+            name: element.payload.doc.data().name,
+            dateStart: element.payload.doc.data().dateStart.toDate(),
+            dateEnd: element.payload.doc.data().dateEnd.toDate()
+          })
+        });
+        this.agregarEventos();
+      }, error => {
+        console.log(error);
+      }
+    )
+  }
+
+  agregarEventos() {
+    this.events = [];
+    let contador = 0;
+    this.eventosCalendario.forEach(element => {
+      this.events.push({
+        start: startOfDay(element.dateStart),
+        end: startOfDay(element.dateEnd),
+        title: element.name,
+        cssClass: 'custom-event',
+        color: {
+          primary: '#488aff',
+          secondary: '#bbd0f5'
+        },
+        resizable: {
+          beforeStart: true,
+          afterEnd: true
+        },
+        draggable: true
+      })
+
+      DataService.addEvent(this.events[contador]);
+      contador++;
+    })
+
+    console.log(this.events);
+  }
+
+  //modal agregar eventos
   async presentModal(value) {
     console.log("HOlis: ", value)
     const modal = await this.modalController.create({
@@ -63,4 +102,9 @@ export class Tab2Page {
     });
     return await modal.present();
   }
+
+  ngOnInit(): void {
+    this.getEvents();
+  }
 }
+

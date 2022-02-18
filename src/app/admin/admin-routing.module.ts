@@ -25,6 +25,10 @@ const routes: Routes = [
         loadChildren: () => import('./update-user/update-user.module').then( m => m.UpdateUserPageModule)
       },
       {
+        path: 'event-calendar',
+        loadChildren: () => import('./event-calendar/event-calendar.module').then( m => m.EventCalendarPageModule)
+      },
+      {
         path: '',
         redirectTo: '/admin/content',
         pathMatch: 'full'
@@ -35,7 +39,7 @@ const routes: Routes = [
     path: '',
     redirectTo: '/admin/content',
     pathMatch: 'full'
-  }
+  },
 ];
 
 @NgModule({

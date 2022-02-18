@@ -5,31 +5,40 @@
         <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="title">{{ title }}</ion-title>
+    <!--<ion-title class="title">{{ title }}</ion-title>-->
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <div class="event-data -bc-p-2">
-    <ion-list lines=none>
-      <ion-item>
-        <ion-input placeholder="Nombre del evento" [(ngModel)]='title'></ion-input>
-      </ion-item>
-      <ion-item-divider class='-bc-p-2'></ion-item-divider>
-      <ion-item>
-        <ion-label>Inicio</ion-label>
-        <ion-datetime display-format="MMM DD, YYYY HH:mm" picker-format="MMM DD, YYYY HH:mm" [(ngModel)]='start' mode='md'></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label>Fin</ion-label>
-        <ion-datetime display-format="MMM DD, YYYY HH:mm" picker-format="MMM DD, YYYY HH:mm" [(ngModel)]='end' mode='md'></ion-datetime>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label>Todo el día</ion-label>
-        <ion-toggle [(ngModel)]="allDay"></ion-toggle>
-      </ion-item>
-    </ion-list>
-    <div class="button" (click)='addEvent()'>Añadir evento</div>
-  </div>
-</ion-content>
 
+<ion-content>
+  <form [formGroup]="eventForm">
+    <div class="event-data -bc-p-2">
+      <ion-list lines=none>
+        <ion-item>
+          <ion-input placeholder="Nombre del evento" formControlName="name"></ion-input>
+        </ion-item>
+        <ion-item-divider class='-bc-p-2'></ion-item-divider>
+        <ion-item>
+          <ion-label>Inicio</ion-label>
+          <ion-datetime display-format="MMM DD, YYYY HH:mm" picker-format="MMM DD, YYYY HH:mm" mode='md' 
+          formControlName="dateStart" (ionChange)="eventoCorrecto()"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>Fin</ion-label>
+          <ion-datetime display-format="MMM DD, YYYY HH:mm" picker-format="MMM DD, YYYY HH:mm" mode='md' 
+          formControlName="dateEnd" (ionChange)="eventoCorrecto()"></ion-datetime>
+        </ion-item>
+        <ion-item *ngIf="eventSuccess == false && errorTexto != ''">
+          <span class="spanError"> {{errorTexto}} </span>
+        </ion-item>
+
+        <!--<ion-item>
+          <ion-label>Todo el día</ion-label>
+          <ion-toggle [(ngModel)]="allDay"></ion-toggle>
+        </ion-item>-->
+      </ion-list>
+
+      <div class="button" (click)="addEvent()">Añadir evento</div>
+    </div>
+  </form>
+
+</ion-content>
