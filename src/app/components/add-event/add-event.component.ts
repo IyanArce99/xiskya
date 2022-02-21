@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { addHours, startOfDay } from 'date-fns';
 import { DataService } from 'src/app/services/data.service';
@@ -12,6 +12,7 @@ import { ErrorService } from '../../services/error.service';
   styleUrls: ['./add-event.component.scss'],
 })
 export class AddEventComponent implements OnInit {
+  @Input() dato;
   //variables
   start: string = "2021-02-18T08:08:00.006Z";
   end: string = "2021-02-19T09:00:00.556Z";
@@ -32,9 +33,13 @@ export class AddEventComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (DataService.dateSelected) {
+    /*if (DataService.dateSelected) {
       this.start = DataService.dateSelected;
       this.end = DataService.dateSelected;
+    }*/
+    if(this.dato != undefined){
+      this.eventForm.get("dateStart").setValue(this.dato.date.toString());
+      this.eventForm.get("dateEnd").setValue(this.dato.date.toString());
     }
   }
 
@@ -88,6 +93,9 @@ export class AddEventComponent implements OnInit {
   }
 
   addEvent() {
+    //const idBoton = document.querySelector('#botonEvento');
+    
+
     if (this.eventSuccess == true) {
       const name = this.eventForm.get('name').value;
       const dateStart = new Date(this.eventForm.get('dateStart').value);
@@ -145,6 +153,10 @@ export class AddEventComponent implements OnInit {
       data.present();
     })
 
+    this.modalController.dismiss();
+  }
+
+  dismissModalCancel():void{
     this.modalController.dismiss();
   }
 }

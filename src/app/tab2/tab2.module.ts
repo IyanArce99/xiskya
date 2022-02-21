@@ -13,6 +13,13 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from '../components/calendar/calendar.component';
 import { AddEventComponent } from '../components/add-event/add-event.component';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import { ModalMostrarCalendarioPage } from '../pages/modal-mostrar-calendario/modal-mostrar-calendario.page';
+
+
+
+registerLocaleData(localeEs);
 
 @NgModule({
   imports: [
@@ -24,6 +31,8 @@ import { AddEventComponent } from '../components/add-event/add-event.component';
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
     ReactiveFormsModule
   ],
-  declarations: [Tab2Page, CalendarComponent, AddEventComponent]
+  declarations: [Tab2Page, CalendarComponent, AddEventComponent, ModalMostrarCalendarioPage],
+  entryComponents: [ModalMostrarCalendarioPage]
+
 })
 export class Tab2PageModule {}

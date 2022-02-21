@@ -45,7 +45,11 @@ const routes: Routes = [
   {
     path: 'modal-mensajes',
     loadChildren: () => import('./pages/modal-mensajes/modal-mensajes.module').then( m => m.ModalMensajesPageModule)
+  },  {
+    path: 'modal-mostrar-calendario',
+    loadChildren: () => import('./pages/modal-mostrar-calendario/modal-mostrar-calendario.module').then( m => m.ModalMostrarCalendarioPageModule)
   },
+
 
 
 ];

@@ -1,6 +1,7 @@
   <div class="-header-type">
     <ion-icon name="chevron-back-outline" (click)='previousType()'></ion-icon>
-    <span>{{arrayTypesCalendar[indexTypeCalendar]}}</span>
+    <!--<span>{{arrayTypesCalendar[indexTypeCalendar]}}</span>-->
+    <span> {{tipoFecha}} </span>
     <ion-icon name="chevron-forward-outline" (click)='nextType()'></ion-icon>
   </div>
 
@@ -8,19 +9,24 @@
     [viewDate]="viewDate"
     [events]="getEvents()"
     (eventClicked)='test($event)'
-    (dayClicked)='dayClicked($event.day)'>
+    (dayClicked)='dayClicked($event.day)'
+    [weekStartsOn]="weekStartsOn"
+    [locale]="locale">
   </mwl-calendar-month-view>
   <mwl-calendar-week-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "week"'
     [viewDate]="viewDate"
     [events]="getEvents()"
    (eventClicked)='test($event)'
-    (hourSegmentClicked)='dayClicked($event)'>
+    (hourSegmentClicked)='dayClicked($event)'
+    [weekStartsOn]="weekStartsOn"
+    [locale]="locale">
   </mwl-calendar-week-view>
   <mwl-calendar-day-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "day"'
     [viewDate]="viewDate"
     [events]="getEvents()"
     (eventClicked)='test($event)'
-    (hourSegmentClicked)='dayClicked($event)'>
+    (hourSegmentClicked)='dayClicked($event)'
+    [locale]="locale">
   </mwl-calendar-day-view>
 
   <ion-fab class="add-event">

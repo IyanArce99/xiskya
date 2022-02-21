@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="dismissModal()">
+      <ion-button (click)="dismissModalCancel()">
         <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -37,7 +37,7 @@
         </ion-item>-->
       </ion-list>
 
-      <div class="button" (click)="addEvent()">Añadir evento</div>
+      <div class="button" (click)="addEvent()" id="botonEvento">Añadir evento</div>
     </div>
   </form>
 

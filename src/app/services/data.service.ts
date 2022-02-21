@@ -16,8 +16,9 @@ export class DataService {
 
   constructor(private _firestore: AngularFirestore) { }
 
-  static addEvent(event: CalendarEvent) : void {
-    this.events.push(event);
+  static addEvent(events: CalendarEvent[]) : void {
+    this.events = [];
+    this.events = events;
   }
 
   static getEvents(): CalendarEvent[] {

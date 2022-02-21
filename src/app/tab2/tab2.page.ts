@@ -67,11 +67,11 @@ export class Tab2Page {
 
   agregarEventos() {
     this.events = [];
-    let contador = 0;
     this.eventosCalendario.forEach(element => {
+      const horasDiferencia = element.dateEnd.getHours() - element.dateStart.getHours();
       this.events.push({
-        start: startOfDay(element.dateStart),
-        end: startOfDay(element.dateEnd),
+        start: addHours(startOfDay(element.dateStart), element.dateStart.getHours()),
+        end: addHours(element.dateEnd, horasDiferencia),
         title: element.name,
         cssClass: 'custom-event',
         color: {
@@ -85,20 +85,20 @@ export class Tab2Page {
         draggable: true
       })
 
-      DataService.addEvent(this.events[contador]);
-      contador++;
+      DataService.addEvent(this.events);
     })
-
-    console.log(this.events);
   }
 
   //modal agregar eventos
   async presentModal(value) {
-    console.log("HOlis: ", value)
+    console.log(value);
     const modal = await this.modalController.create({
       component: AddEventComponent,
       cssClass: 'my-custom-class',
-      swipeToClose: true
+      swipeToClose: true,
+      componentProps: {
+        'dato': value
+      }
     });
     return await modal.present();
   }
