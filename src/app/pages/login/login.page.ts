@@ -97,7 +97,7 @@ export class LoginPage implements OnInit {
         //una vez encontremos ese correo realizamos un return para que concluya el metodo y guardamos todo el usuario en una variable del localStorage para poder usarlo
         localStorage.setItem('user-complete', JSON.stringify(users[i]));
         //nos movemos a otro componente
-        return this._router.navigate(['/']);
+        return this._router.navigate(['/tabs']);
       }
     }
   }

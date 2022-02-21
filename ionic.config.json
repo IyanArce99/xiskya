@@ -1,5 +1,7 @@
 {
   "name": "xiskya",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
