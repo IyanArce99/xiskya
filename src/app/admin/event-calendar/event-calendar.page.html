@@ -1,9 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>event-calendar</ion-title>
+    <div class="container">
+      <div class="row">
+        <div class="d-flex vertical-align-center col-12">
+          <ion-title class="tituloToolbar">Eventos</ion-title>
+          <button class="botonToolbar" routerLink="/tabs"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div class="mt-20">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th scope="col">Evento</th>
+            <th scope="col">Comienzo</th>
+            <th scope="col">Final</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of events | paginate: { itemsPerPage: 8, currentPage: p }">
+            <th scope="row"> {{event.name}} </th>
+            <td> {{event.dateStart}} </td>
+            <td> {{event.dateEnd}} </td>
+            <td>
+              <button class="boton" (click)="openModal(event.name, event.id)"><i class="fas fa-trash borrar"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
 </ion-content>

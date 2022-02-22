@@ -6,6 +6,7 @@ import { ModalController } from '@ionic/angular';
 import { AddEventComponent } from '../components/add-event/add-event.component';
 import { Events } from '../modelos/Event';
 import { DataService } from '../services/data.service';
+import { ModalMostrarCalendarioPage } from '../pages/modal-mostrar-calendario/modal-mostrar-calendario.page';
 
 @Component({
   selector: 'app-tab2',

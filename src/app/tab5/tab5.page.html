@@ -4,8 +4,8 @@
       <div class="row">
         <div class="d-flex align-self-center col-12">
           <ion-title class="tituloToolbar">Perfil</ion-title>
-          <button class="botonToolbar" routerLink="/admin"><i class="fas fa-user-cog"
-              *ngIf="usuario && usuario.range == 1"></i></button>
+          
+          <button class="botonToolbar" (click)="openEnd()"><ion-icon name="menu-outline" class="iconMenu"></ion-icon></button>
         </div>
       </div>
     </div>

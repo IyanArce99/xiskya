@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
     //usamos el metodo de acceder con email y contraseña
     this.afAuth.signInWithEmailAndPassword(usuario, password).then(result => {
       //guardamos en localstorage el usuario y su id
-      this.setLocalStorage(result.user);
+      this.setLocalStorage(result.user, password);
       
       this.getUsuarios();
     }).catch(error =>{
@@ -56,10 +56,11 @@ export class LoginPage implements OnInit {
     })
   }
 
-  setLocalStorage(user:any){
+  setLocalStorage(user:any, password:any){
     const usuario:Login = {
       id: user.uid,
-      email: user.email
+      email: user.email,
+      password: password
     };
 
     localStorage.setItem('user', JSON.stringify(usuario));

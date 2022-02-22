@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../modelos/User';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DataService } from '../services/data.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab5',
@@ -14,7 +15,7 @@ export class Tab5Page implements OnInit {
   editarNumberCongressType: boolean = false;
   usuarioForm:FormGroup
 
-  constructor(private fb:FormBuilder, private _dataService:DataService) {
+  constructor(private fb:FormBuilder, private _dataService:DataService, private menu: MenuController) {
     this.usuarioForm = this.fb.group ({
       location: '',
       numberCongress: ''
@@ -76,6 +77,11 @@ export class Tab5Page implements OnInit {
     }).catch(error => {
       console.log(error);
     })
+  }
+
+  //Menu lateral
+  openEnd() {
+    this.menu.open('end');
   }
 
 }

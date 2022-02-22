@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="container">
+      <div class="row">
+        <div class="d-flex vertical-align-center col-12">
+          <ion-title class="tituloToolbar">Borrar evento</ion-title>
+          <button class="botonToolbar" (click)="cerrarModal()">Salir</button>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenedor">
+    <h4 class="text-center">¿ Desea borrar el evento: 
+      <span class="textoEmail">
+        {{event}} ?
+      </span>
+    </h4>
+    <p class="text-center">En caso de aceptar pulse en el botón que se muestra a continuación.</p>
+    <button class="btn-correo" (click)="borrarEvento()">Borrar evento</button>
+  </div>

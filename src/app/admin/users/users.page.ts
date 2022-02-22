@@ -25,20 +25,20 @@ export class UsersPage implements OnInit, OnDestroy {
   subscriptionUser: Subscription = new Subscription();
   selector: number = 0;
   agregarUsuariosForm: FormGroup;
-  usuarios:Array<User> = [];
-  usuario:User;
-  tipoPassword:boolean=false;
-  messages:Array<Message> = [];
+  usuarios: Array<User> = [];
+  usuario: User;
+  tipoPassword: boolean = false;
+  messages: Array<Message> = [];
 
   //Variables para imagen
   uploadPercent: Observable<number>;
   urlImage: Observable<string>;
   id = '';
-  file:any = [];
-  previsualizarImagen:string;
+  file: any = [];
+  previsualizarImagen: string;
 
-  constructor(private fb: FormBuilder, private _dataService: DataService, private afAuth: AngularFireAuth, private storage: AngularFireStorage, 
-    private sanitizer: DomSanitizer, private toastCtrl: ToastController, private modalController:ModalController) {
+  constructor(private fb: FormBuilder, private _dataService: DataService, private afAuth: AngularFireAuth, private storage: AngularFireStorage,
+    private sanitizer: DomSanitizer, private toastCtrl: ToastController, private modalController: ModalController) {
     this.agregarUsuariosForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -49,7 +49,7 @@ export class UsersPage implements OnInit, OnDestroy {
       birthday: ['', Validators.required],
       imagePath: [''],
       range: [0, Validators.required],
-    }), this.tipoPassword =true;
+    }), this.tipoPassword = true;
   }
 
   ngOnInit() {
@@ -57,7 +57,7 @@ export class UsersPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.subscriptionUser.unsubscribe();
+    this.subscriptionUser.unsubscribe();
   }
 
   seleccionarApartado(valor: number) {
@@ -65,18 +65,18 @@ export class UsersPage implements OnInit, OnDestroy {
   }
 
   //metodo para comprobar el tipo del input password para hacerla visible o no
-  comprobarPasswordTipo(){
+  comprobarPasswordTipo() {
     this.tipoPassword = !this.tipoPassword;
-    const passwordCambio:any = document.querySelector('#password');
-    if(passwordCambio.type == 'password'){
+    const passwordCambio: any = document.querySelector('#password');
+    if (passwordCambio.type == 'password') {
       passwordCambio.type = "text";
-    }else{
+    } else {
       passwordCambio.type = 'password';
     }
   }
 
   //modal reset
-  async openModal(email:any){
+  async openModal(email: any) {
     const modal = await this.modalController.create({
       component: ModalResetPage,
       cssClass: 'modalCustomizado',
@@ -116,7 +116,7 @@ export class UsersPage implements OnInit, OnDestroy {
     }
   }
 
-  registrarUsuario(){
+  registrarUsuario() {
     //guardamos los datos del formulario en un objeto de tipo user
     const email = this.agregarUsuariosForm.get("email").value;
     const name = this.agregarUsuariosForm.get("name").value;
@@ -141,12 +141,24 @@ export class UsersPage implements OnInit, OnDestroy {
       messages: this.messages
     }
 
+    /* 
+      !!Nota: antes de crear el usuario guardamos el que esta logueado ya que firebase actualiza el token de inicio de sesion una vez se crea el usuario
+      una vez creado el usuario volvemos a loguear el usuario anterior
+    */
+    const usuarioLoguear = JSON.parse(localStorage.getItem('user'));
+    
     this.afAuth.createUserWithEmailAndPassword(email, password).then(result => {
-      this.agregarUsuario();
+      //deslogueamos al usuario que se acaba de crear
+      this.afAuth.signOut();
+      //logueamos al usuario que ya estaba anteriormente
+      this.afAuth.signInWithEmailAndPassword(usuarioLoguear.email,usuarioLoguear.password).then(result=>{
+        this.agregarUsuario();
+      }).catch(error=>{
+        console.log(error);
+      })
     }).catch(error => {
       console.log(error);
     })
-
   }
 
   agregarUsuario() {
@@ -172,13 +184,13 @@ export class UsersPage implements OnInit, OnDestroy {
       }).then((data) => {
         data.present();
       })
-      
+
     }).catch(error => {
       console.log(error);
     })
   }
 
-  getUsuarios(){
+  getUsuarios() {
     this.subscriptionUser = this._dataService.getUsuarios().subscribe(
       data => {
         this.usuarios = [];
@@ -194,9 +206,9 @@ export class UsersPage implements OnInit, OnDestroy {
     )
   }
 
-  borrarUsuario(codigo:string){
+  borrarUsuario(codigo: string) {
     this._dataService.borrarUsuario(codigo).then(data => {
-    }).catch(error =>{
+    }).catch(error => {
       console.log(error);
     })
   }
@@ -254,7 +266,7 @@ export class UsersPage implements OnInit, OnDestroy {
 
   })
 
-  limpiarContenidoPrevisualizacion(){
+  limpiarContenidoPrevisualizacion() {
     this.previsualizarImagen = '';
     this.file = [];
   }

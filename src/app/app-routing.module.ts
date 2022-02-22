@@ -3,11 +3,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'tabs',
+    path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
@@ -50,8 +50,10 @@ const routes: Routes = [
     path: 'modal-mostrar-calendario',
     loadChildren: () => import('./pages/modal-mostrar-calendario/modal-mostrar-calendario.module').then( m => m.ModalMostrarCalendarioPageModule)
   },
-
-
+  {
+    path: 'modal-delete-event',
+    loadChildren: () => import('./pages/modal-delete-event/modal-delete-event.module').then( m => m.ModalDeleteEventPageModule)
+  },
 
 ];
 @NgModule({
