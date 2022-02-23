@@ -15,7 +15,7 @@ import { ModalController } from '@ionic/angular';
 export class CalendarComponent implements OnInit {
   @Input() clickDate: any;
   indexTypeCalendar: number = 2;
-  arrayTypesCalendar: string[] = ['day', 'week', 'month'];
+  arrayTypesCalendar: string[] = ['week', 'day', 'month'];
 
   viewDate: Date = new Date();
   view: string = 'month';
@@ -72,9 +72,9 @@ export class CalendarComponent implements OnInit {
 
   cambiarTipoFecha(){
     if(this.indexTypeCalendar === 0){
-      this.tipoFecha = 'dia';
-    }else if(this.indexTypeCalendar === 1){
       this.tipoFecha = 'semana';
+    }else if(this.indexTypeCalendar === 1){
+      this.tipoFecha = 'dia';
     }else{
       this.tipoFecha = 'mes';
     }

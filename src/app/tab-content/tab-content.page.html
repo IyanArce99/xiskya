@@ -26,14 +26,13 @@
         </div>
         <div class="col-12" *ngIf="contenido.pdfPath != ''">
           <p class="parrafo">Para más información consulte 
-            <a href="contenido.pdfPath"> 
+            <a [href]="contenido.pdfPath"> 
               <span class="spanEnlace"> aqui. </span> 
             </a>
           </p>
         </div>
       </div>
     </div>
-
   </div>
 
 </ion-content>

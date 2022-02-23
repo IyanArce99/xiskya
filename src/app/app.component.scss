@@ -1,3 +1,11 @@
 button{
     background: none;
 }
+
+ion-toolbar {
+    --border-style: none;
+    --background: #4c5361;
+}
+ion-title {
+    color: white;
+}
