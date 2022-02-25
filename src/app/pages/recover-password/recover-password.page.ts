@@ -6,6 +6,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 //modulos y servicios
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ErrorService } from 'src/app/services/error.service';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class RecoverPasswordPage implements OnInit {
   //booleano para comprobar si hay un error
   errorComprobar:boolean = false;
 
-  constructor(private fb:FormBuilder, private _router:Router, private afAuth: AngularFireAuth, private _error:ErrorService) {
+  constructor(private fb:FormBuilder, private _router:Router, private afAuth: AngularFireAuth, private _error:ErrorService, private toastCtrl: ToastController) {
     this.recuperarForm = this.fb.group({
       correo: ['', [Validators.required, Validators.email]]
     })
@@ -33,6 +34,14 @@ export class RecoverPasswordPage implements OnInit {
 
     //usamos el metodo para resetear la password
     this.afAuth.sendPasswordResetEmail(correo).then(() => {
+      let toast = this.toastCtrl.create({
+        message: 'Correo enviado',
+        duration: 2000,
+        position: 'bottom',
+        color: 'success'
+      }).then((data) => {
+        data.present();
+      })
       //volvemos al login
       this._router.navigate(['/login']);
     }).catch(error => {

@@ -25,14 +25,15 @@
           <p class="parrafo"> {{contenido.content}} </p>
         </div>
         <div class="col-12" *ngIf="contenido.pdfPath != ''">
-          <p class="parrafo">Para más información consulte 
-            <a [href]="contenido.pdfPath"> 
-              <span class="spanEnlace"> aqui. </span> 
+          <p class="parrafo">Para más información consulte
+            <a download [href]="contenido.pdfPath" target="_blank">
+              <span class="spanEnlace"> aqui. </span>
             </a>
           </p>
+
+          <button class="btn btn-success" (click)="descargarPdf()"> Descargar pdf</button>
         </div>
       </div>
     </div>
   </div>
-
 </ion-content>

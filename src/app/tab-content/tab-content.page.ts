@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { Content } from '../modelos/Content';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { AngularFireStorage, GetDownloadURLPipe } from '@angular/fire/compat/storage';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tab-content',
@@ -10,26 +11,33 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
   styleUrls: ['./tab-content.page.scss'],
 })
 export class TabContentPage implements OnInit {
-  contenido:Content;
+  contenido: Content;
   idContenido = '';
+  pdfUrl: Observable<string>;
 
-  constructor(private _route:ActivatedRoute, private _dataService:DataService, private fs:AngularFireStorage) { }
+  constructor(private _route: ActivatedRoute, private _dataService: DataService, private fs: AngularFireStorage) { }
 
   ngOnInit() {
     this.getContenido();
   }
 
-  getContenido(){
+  getContenido() {
     this.idContenido = this._route.snapshot.paramMap.get('id');
 
     this._dataService.getContenidoPorId(this.idContenido).subscribe(
-      result=>{
+      result => {
         this.contenido = result.data();
+      }, error => {
+        console.log(error);
+      })
+  }
 
-        console.log(this.contenido.pdfPath);
-    }, error=> {
-      console.log(error);
-    })
+  descargarPdf() {
+    const ref = this.fs.refFromURL(this.contenido.pdfPath);
+
+    this.pdfUrl = ref.getDownloadURL();
+    
+    
   }
 
 }

@@ -19,7 +19,8 @@
   
   <div class="container-persons">
     <div *ngFor='let usuario of usuariosFiltrados | paginate: { itemsPerPage: 7, currentPage: p }' class="person-item -bc-p-3 -tc-white" (click)="abrirModalMensajes(usuario)">
-      <img src='https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png' alt='logo' />
+      <img src='https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png' alt='logo' *ngIf="usuario.imagePath == ''"/>
+      <img [src]='usuario.imagePath' alt='logo' *ngIf="usuario.imagePath != ''"/>
       
       <div class='block-start'>
         <div class="names">
