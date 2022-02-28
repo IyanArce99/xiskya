@@ -19,7 +19,7 @@ export class UpdateContentPage implements OnInit {
   //Variables
   contenidoForm: FormGroup;
   idUpdate: string;
-  mostrarPdf: boolean = false;
+  mostrarPdf: boolean = true;
   imagenOriginal = '';
   pdfOriginal = '';
 
@@ -27,12 +27,12 @@ export class UpdateContentPage implements OnInit {
   idImagen = '';
   file;
   previsualizarImagen = '';
-  urlImage: Observable <string>;
+  urlImage: Observable<string>;
 
   //Variables pdf
   idPdf = '';
   filePdf;
-  urlPdf: Observable <string>;
+  urlPdf: Observable<string>;
 
   constructor(private fb: FormBuilder, private _dataService: DataService, private _router: ActivatedRoute, private afAuth: AngularFireAuth,
     private sanitizer: DomSanitizer, private storage: AngularFireStorage, private toastCtrl: ToastController, private route: Router) {
@@ -53,7 +53,7 @@ export class UpdateContentPage implements OnInit {
 
   mostrarBotonPdf() {
     const pdfDato = this.contenidoForm.get("type").value;
-    this.mostrarPdf = (pdfDato == 2) ? true : false;
+    this.mostrarPdf = (pdfDato == 2 || pdfDato == 0) ? true : false;
   }
 
   /*
@@ -202,7 +202,7 @@ export class UpdateContentPage implements OnInit {
     //primero comprobamos si el tipo es revista ya que solo las revistas tienen pdfs
     const typeRevista = this.contenidoForm.get("type").value;
 
-    if (typeRevista == 2) {
+    if (typeRevista == 2 || typeRevista == 0) {
       //es revista ahora comprobamos si se modifico el pdf
       if (this.filePdf != this.pdfOriginal) {
         //guardamos el nuevo pdf

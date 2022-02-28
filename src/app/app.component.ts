@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('user-complete'));
 
     //comprobamos si es admin
-    if (this.usuario.range != 1) {
+    if (this.usuario.range == 0) {
       //en caso de no serlo le lanzamos un aviso aclarando que no es administrador
       let toast = this.toastController.create({
         message: 'Se requieren permisos de administrador',

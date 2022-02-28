@@ -88,7 +88,7 @@ input[type="file"] {
 
 .previsualizar{
     width: 100%;
-    height: 200px;
+    height: 400px;
 }
 
 .fa-times-circle{
@@ -99,4 +99,16 @@ input[type="file"] {
 .errorToast{
     background-color: red;
     color: white;
+}
+
+.datePicker{
+    width: 100%;
+    padding: 5px;
+    background-color: gray;
+    border-radius: 5px;
+}
+
+.aviso{
+    font-size: small;
+    color: red;
 }

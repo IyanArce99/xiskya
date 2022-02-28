@@ -1,4 +1,4 @@
-<ion-tabs>
+<ion-tabs *ngIf="usuario">
 
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="content">
@@ -6,7 +6,7 @@
       <label>Contenido</label>
     </ion-tab-button>
 
-    <ion-tab-button tab="users">
+    <ion-tab-button tab="users" *ngIf="usuario.range == 1">
       <ion-icon name="people-outline"></ion-icon>
       <label>Personas</label>
     </ion-tab-button>

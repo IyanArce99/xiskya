@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthUserGuard } from 'src/app/shared/auth-user.guard';
 
 import { UpdateUserPage } from './update-user.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: UpdateUserPage
+    component: UpdateUserPage,
+    canActivate: [AuthUserGuard]
   }
 ];
 

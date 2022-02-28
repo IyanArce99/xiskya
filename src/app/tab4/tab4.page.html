@@ -10,11 +10,21 @@
 </ion-header>
 
 <ion-content>
-  <div *ngFor="let oracion of frases" class="oracion" (click)="presentModal(oracion)">
+  <div *ngFor="let oracion of frases; let i=index" class="oracion">
     <div class="text">
       {{ oracion.title }}
     </div>
-    <div class="next">
+
+    <div class="next" *ngIf="i==0 || i==5">
+      <a href="https://www.eltestigofiel.org/index.php?idu=lt_liturgia" *ngIf="i==0">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </a>
+      <a href="https://www.xiskya.com/liturgia-pureza.html" *ngIf="i==5">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </a>
+    </div>
+
+    <div class="next" *ngIf="i!=0 && i!=5" (click)="presentModal(oracion)">
       <ion-icon name="arrow-forward-outline"></ion-icon>
     </div>
   </div>

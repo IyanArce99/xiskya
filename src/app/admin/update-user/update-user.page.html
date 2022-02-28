@@ -95,7 +95,7 @@
             </span>
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input cumpleaños-->
-            <input type="date" class="form-control form-control mb-2" placeholder="Cumpleaños"
+            <input type="date" class="mb-2 datePicker" placeholder="Cumpleaños"
               formControlName="birthday">
             <!--Comprobacion validacion de campo cumpleañs rellenado-->
             <span class="text-danger"
@@ -107,6 +107,7 @@
             <select class="form-control form-control mb-2" formControlName="range">
               <option value="0">Usuario estandar</option>
               <option value="1">Usuario administrador</option>
+              <option value="2">Usuario intermedio</option>
             </select>
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input imagenes-->
@@ -114,6 +115,8 @@
               <input type="file" (change)="onUpload($event)"/>
               Cambiar imagen
             </label>
+
+            <span class="aviso"> La visualización de la imagen se muestra con un alto de 400 pixeles para no saturar el formulario.</span>
 
             <!--Previsualizacion de la imagen ya añadida-->
             <div class="my-2" *ngIf="imagenOriginal != '' && previsualizarImagen == ''">

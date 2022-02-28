@@ -64,7 +64,7 @@
             </label>
 
             <!--Previsualizacion de la imagen ya añadida-->
-            <div class="my-2" *ngIf="!previsualizarImagen">
+            <div class="my-2" *ngIf="!previsualizarImagen && contenidoForm.value.imagePath != ''">
               <img [src]="contenidoForm.value.imagePath" alt="" class="previsualizar ml-2">
             </div>
 

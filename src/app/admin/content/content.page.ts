@@ -21,7 +21,7 @@ export class ContentPage implements OnInit {
   contenidoForm: FormGroup;
   selector: number = 0;
   contenidoTotal: Array<Content> = [];
-  mostrarPdf: boolean = false;
+  mostrarPdf: boolean = true;
 
   //Variables para imagen
   uploadPercent: Observable<number>;
@@ -60,7 +60,7 @@ export class ContentPage implements OnInit {
 
   //metodo para mostrar o no el input de pdfs
   comprobarContenido(tipo){
-    this.mostrarPdf = (tipo == 2) ? true : false;
+    this.mostrarPdf = (tipo == 2 || tipo==0) ? true : false;
   }
 
   //metodo para guardar la imagen
@@ -95,7 +95,7 @@ export class ContentPage implements OnInit {
     //comprobamos que el tipo de contenido sean revistas
     const tipo = this.contenidoForm.get("type").value;
     //en caso de ser revistas guardamos el pdf
-    if(tipo == 2){
+    if(tipo == 2 || tipo==0){
       //creamos una ruta para la imagen
       const filePath = `pdf/${this.idPdf}`;
 
