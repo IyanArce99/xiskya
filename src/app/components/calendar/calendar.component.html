@@ -1,36 +1,26 @@
-  <div class="-header-type">
-    <ion-icon name="chevron-back-outline" (click)='previousType()'></ion-icon>
-    <!--<span>{{arrayTypesCalendar[indexTypeCalendar]}}</span>-->
-    <span> {{tipoFecha}} </span>
-    <ion-icon name="chevron-forward-outline" (click)='nextType()'></ion-icon>
-  </div>
+<div class="-header-type">
+  <ion-icon name="chevron-back-outline" (click)='previousType()'></ion-icon>
+  <!--<span>{{arrayTypesCalendar[indexTypeCalendar]}}</span>-->
+  <span> {{tipoFecha}} </span>
+  <ion-icon name="chevron-forward-outline" (click)='nextType()'></ion-icon>
+</div>
 
-  <mwl-calendar-month-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "month"'
-    [viewDate]="viewDate"
-    [events]="getEvents()"
-    (eventClicked)='test($event)'
-    (dayClicked)='dayClicked($event.day)'
-    [weekStartsOn]="weekStartsOn"
-    [locale]="locale">
-  </mwl-calendar-month-view>
-  <mwl-calendar-week-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "week"'
-    [viewDate]="viewDate"
-    [events]="getEvents()"
-   (eventClicked)='test($event)'
-    (hourSegmentClicked)='dayClicked($event)'
-    [weekStartsOn]="weekStartsOn"
-    [locale]="locale">
-  </mwl-calendar-week-view>
-  <mwl-calendar-day-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "day"'
-    [viewDate]="viewDate"
-    [events]="getEvents()"
-    (eventClicked)='test($event)'
-    (hourSegmentClicked)='dayClicked($event)'
-    [locale]="locale">
-  </mwl-calendar-day-view>
+<mwl-calendar-month-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "month"' [viewDate]="viewDate"
+  [events]="getEvents()" (eventClicked)='test($event)' (dayClicked)='dayClicked($event.day)'
+  [weekStartsOn]="weekStartsOn" [locale]="locale" [activeDayIsOpen]="activeDayIsOpen">
+</mwl-calendar-month-view>
 
-  <ion-fab class="add-event">
-    <ion-fab-button (click)='openModalAddEvent()'>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+<mwl-calendar-week-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "week"' [viewDate]="viewDate"
+  [events]="getEvents()" (eventClicked)='test($event)' (hourSegmentClicked)='dayClicked($event)'
+  [weekStartsOn]="weekStartsOn" [locale]="locale">
+</mwl-calendar-week-view>
+
+<mwl-calendar-day-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "day"' [viewDate]="viewDate"
+  [events]="getEvents()" (eventClicked)='test($event)' (hourSegmentClicked)='dayClicked($event)' [locale]="locale">
+</mwl-calendar-day-view>
+
+<ion-fab class="add-event">
+  <ion-fab-button (click)='openModalAddEvent()'>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
