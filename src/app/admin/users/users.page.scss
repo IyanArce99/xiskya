@@ -108,11 +108,15 @@ input[type="file"] {
 .datePicker{
     width: 100%;
     padding: 5px;
-    background-color: gray;
+    background-color: rgba(180, 180, 180, 0.5);
     border-radius: 5px;
 }
 
 .aviso{
     font-size: small;
     color: red;
+}
+
+.infoNumber{
+    font-style: italic;
 }

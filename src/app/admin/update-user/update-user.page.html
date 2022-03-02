@@ -4,7 +4,7 @@
       <div class="row">
         <div class="d-flex vertical-align-center col-12">
           <ion-title class="tituloToolbar">Actualizar usuario</ion-title>
-          <button class="botonToolbar" routerLink="/"><i class="fas fa-sign-out-alt"></i></button>
+          <button class="botonToolbar" routerLink="/admin/users"><i class="fas fa-sign-out-alt"></i></button>
         </div>
       </div>
     </div>
@@ -116,7 +116,7 @@
               Cambiar imagen
             </label>
 
-            <span class="aviso"> La visualización de la imagen se muestra con un alto de 400 pixeles para no saturar el formulario.</span>
+            <span class="aviso"> La imagen tendrá que ser de 400x400 pixeles.</span>
 
             <!--Previsualizacion de la imagen ya añadida-->
             <div class="my-2" *ngIf="imagenOriginal != '' && previsualizarImagen == ''">
