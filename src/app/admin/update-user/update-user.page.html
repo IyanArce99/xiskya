@@ -38,7 +38,8 @@
             <!--Input contraseña-->
             <!--<input type="password" class="form-control form-control mb-2" placeholder="Contraseña" formControlName="password">-->
             <div class="input-group mb-2">
-              <input type="password" class="form-control" placeholder="password" formControlName="password" id="password">
+              <input type="password" class="form-control" placeholder="password" formControlName="password"
+                id="password">
               <div class="input-group-text" (click)="comprobarPasswordTipo()">
                 <i class="fa-solid fa-eye" *ngIf="tipoPassword == true"></i>
                 <i class="fa-solid fa-eye-slash" *ngIf="tipoPassword == false"></i>
@@ -95,8 +96,8 @@
             </span>
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input cumpleaños-->
-            <input type="date" class="mb-2 datePicker" placeholder="Cumpleaños"
-              formControlName="birthday">
+            <input type="date" class="datePicker" placeholder="Cumpleaños" formControlName="birthday">
+            <span class="nacimientoSpan mb-2">Fecha de nacimiento*</span>
             <!--Comprobacion validacion de campo cumpleañs rellenado-->
             <span class="text-danger"
               *ngIf="agregarUsuariosForm.get('birthday')?.hasError('required') && agregarUsuariosForm.get('birthday')?.touched">
@@ -112,7 +113,7 @@
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input imagenes-->
             <label class="custom-file-upload">
-              <input type="file" (change)="onUpload($event)"/>
+              <input type="file" (change)="onUpload($event)" />
               Cambiar imagen
             </label>
 

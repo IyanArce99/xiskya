@@ -53,7 +53,11 @@ const routes: Routes = [
   {
     path: 'modal-delete-event',
     loadChildren: () => import('./pages/modal-delete-event/modal-delete-event.module').then( m => m.ModalDeleteEventPageModule)
+  },  {
+    path: 'modal-mensajes-respuesta',
+    loadChildren: () => import('./pages/modal-mensajes-respuesta/modal-mensajes-respuesta.module').then( m => m.ModalMensajesRespuestaPageModule)
   },
+
 
 ];
 @NgModule({

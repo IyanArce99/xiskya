@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="container">
+      <div class="row">
+        <div class="d-flex vertical-align-center col-12">
+          <ion-title class="tituloToolbar">Mensajes</ion-title>
+          <button class="botonToolbar" (click)="cerrarModal()">Salir</button>
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenedor" *ngIf="mensaje">
+
+    <i class="fas fa-exclamation-triangle icono"></i>
+
+    <h4 class="text-center">¿ Deseas responder al mensaje de
+      <span class="textoEmail">
+        {{mensaje.name | titlecase}} ?
+      </span>
+    </h4>
+    <p class="text-center">
+      <b>Mensaje:</b> {{mensaje.text}}
+    </p>
+    <form [formGroup]="mensajeForm" (ngSubmit)="enviarRespuesta()">
+      <textarea cols="40" rows="5" class="form-control mb-2" formControlName="text"></textarea>
+      <button class="btn-correo" type="submit">Enviar mensaje</button>
+    </form>
+  </div>
+</ion-content>

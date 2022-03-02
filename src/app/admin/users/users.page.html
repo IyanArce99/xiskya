@@ -35,7 +35,8 @@
             <th scope="row">{{usuario.numberCongress}}</th>
             <td>{{usuario.name}}</td>
             <td>
-              <button class="boton" [routerLink]="['/admin/update-user', usuario.id]"><i class="fas fa-edit editar"></i></button>
+              <button class="boton" [routerLink]="['/admin/update-user', usuario.id]"><i
+                  class="fas fa-edit editar"></i></button>
               <button class="boton" (click)="borrarUsuario(usuario.id)"><i class="fas fa-trash borrar"></i></button>
               <button class="boton" (click)="openModal(usuario.email)"><i class="fas fa-key key"></i></button>
             </td>
@@ -70,7 +71,8 @@
             <!--Input contraseña-->
             <!--<input type="password" class="form-control form-control mb-2" placeholder="Contraseña" formControlName="password">-->
             <div class="input-group mb-2">
-              <input type="password" class="form-control" placeholder="password" formControlName="password" id="password">
+              <input type="password" class="form-control" placeholder="password" formControlName="password"
+                id="password">
               <div class="input-group-text" (click)="comprobarPasswordTipo()">
                 <i class="fa-solid fa-eye" *ngIf="tipoPassword == true"></i>
                 <i class="fa-solid fa-eye-slash" *ngIf="tipoPassword == false"></i>
@@ -113,8 +115,7 @@
             </span>
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input localizacion-->
-            <input type="text" class="form-control form-control mb-2" placeholder="Ciudad"
-              formControlName="location">
+            <input type="text" class="form-control form-control mb-2" placeholder="Ciudad" formControlName="location">
             <!--Comprobacion validacion de campo location rellenado-->
             <span class="text-danger"
               *ngIf="agregarUsuariosForm.get('location')?.hasError('required') && agregarUsuariosForm.get('location')?.touched">
@@ -128,12 +129,12 @@
 
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input cumpleaños-->
-            <input type="date" class="mb-2 datePicker" placeholder="Cumpleaños"
-              formControlName="birthday">
+            <input type="date" class="datePicker" placeholder="Cumpleaños" formControlName="birthday">
+            <span class="nacimientoSpan mb-2">Fecha de nacimiento*</span>
             <!--Comprobacion validacion de campo cumpleañs rellenado-->
             <span class="text-danger"
               *ngIf="agregarUsuariosForm.get('birthday')?.hasError('required') && agregarUsuariosForm.get('birthday')?.touched">
-              El cumpleaños es requerido
+              La fecha de nacimiento es requerida
             </span>
             <!-------------------------------------------------------------------------------------------------------->
             <!--Select enum-->

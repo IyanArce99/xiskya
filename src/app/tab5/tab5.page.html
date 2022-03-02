@@ -17,7 +17,7 @@
     <!--Contenedor perfil-->
     <div class="head-box">
       <div class="picture">
-        <img src="/assets/profile/icon.jpg" alt="" *ngIf="usuario.imagePath == '' ">
+        <img src="https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png" alt="" *ngIf="usuario.imagePath == '' ">
         <img [src]="usuario.imagePath" alt="" *ngIf="usuario.imagePath != '' ">
       </div>
       <div class="personal-info">
@@ -75,9 +75,10 @@
           <div *ngIf="usuario.messages.length > 0" class="messages">
             <div *ngFor="let msg of usuario.messages" class="chat-box p-20">
               <div class="image m-10">
-                <img [src]="msg.imagePath" alt="">
+                <img src="https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png" alt="" *ngIf="msg.imagePath == '' ">
+                <img [src]="msg.imagePath" alt="" *ngIf="msg.imagePath != '' ">
               </div>
-              <div class="text-info">
+              <div class="text-info" (click)="responderMensajes(msg)">
                 <div class="nombre">{{msg.name}}</div>
                 <div class="last-message">{{msg.text}}</div>
               </div>

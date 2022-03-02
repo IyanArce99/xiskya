@@ -17,6 +17,7 @@ export class ModalMensajesPage implements OnInit {
 
   constructor(private modalController:ModalController, private fb:FormBuilder, private _dataService:DataService, private toastCtrl: ToastController) {
     this.mensajeForm = this.fb.group ({
+      id: '',
       imagePath : '',
       name: '',
       text: ['', Validators.required],
@@ -33,8 +34,10 @@ export class ModalMensajesPage implements OnInit {
 
     //guardamos la fecha del momento exacto del mensaje
     const fecha:Date = new Date();
+
     //pasamos los parametros al mensaje
-    this.mensajeForm.get('imagePath').setValue(this.usuario.imagePath);
+    this.mensajeForm.get('id').setValue(this.usuarioLogin.id);
+    this.mensajeForm.get('imagePath').setValue(this.usuarioLogin.imagePath);
     this.mensajeForm.get('name').setValue(this.usuarioLogin.name);
     this.mensajeForm.get('fecha').setValue(fecha);
 

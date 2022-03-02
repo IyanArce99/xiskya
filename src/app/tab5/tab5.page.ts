@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../modelos/User';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DataService } from '../services/data.service';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
+import { ModalMensajesRespuestaPage } from '../pages/modal-mensajes-respuesta/modal-mensajes-respuesta.page';
 
 @Component({
   selector: 'app-tab5',
@@ -15,7 +16,7 @@ export class Tab5Page implements OnInit {
   editarNumberCongressType: boolean = false;
   usuarioForm:FormGroup
 
-  constructor(private fb:FormBuilder, private _dataService:DataService, private menu: MenuController) {
+  constructor(private fb:FormBuilder, private _dataService:DataService, private menu: MenuController, private modalController: ModalController) {
     this.usuarioForm = this.fb.group ({
       location: '',
       numberCongress: ''
@@ -28,6 +29,7 @@ export class Tab5Page implements OnInit {
 
   getUsuario(){
     const datoUsuario = JSON.parse(localStorage.getItem('user-complete'));
+    
     this.usuario = datoUsuario;
     this.usuarioForm.get("location").setValue(this.usuario.location);
     this.usuarioForm.get("numberCongress").setValue(this.usuario.numberCongress);
@@ -82,6 +84,18 @@ export class Tab5Page implements OnInit {
   //Menu lateral
   openEnd() {
     this.menu.open('end');
+  }
+
+  async responderMensajes(message:any){
+    const modal = await this.modalController.create({
+      component: ModalMensajesRespuestaPage,
+      cssClass: 'modalCustomizado',
+      componentProps: {
+        'mensaje': message,
+      }
+    });
+
+    return await modal.present();
   }
 
 }

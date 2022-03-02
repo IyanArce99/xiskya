@@ -1,4 +1,5 @@
 export class Message {
+    id?:string;
     imagePath:string;
     name:string; 
     text:string;
