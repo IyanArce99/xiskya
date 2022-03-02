@@ -40,6 +40,7 @@ export class CalendarComponent implements OnInit {
   refresh: Subject<any> = new Subject();
 
   @Output() _addEvent: EventEmitter<any> = new EventEmitter();
+  @Output() _editEvent: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -47,8 +48,6 @@ export class CalendarComponent implements OnInit {
 
   //apertura de evento
   dayClicked({date,events,}: {date: Date; events: CalendarEvent<{ film: Film }>[];}): void {
-    console.log(date);
-    console.log(events);
     if (isSameMonth(date, this.viewDate)) {
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
@@ -66,8 +65,10 @@ export class CalendarComponent implements OnInit {
     return DataService.events;
   }
 
-  test(data): void {
-    console.log("Click: ", data.event);
+  //editar evento
+  editEvent(data): void {
+    console.log(data);
+    this._editEvent.emit(data.event);
   }
 
   openModalAddEvent(value): void {
@@ -102,9 +103,5 @@ export class CalendarComponent implements OnInit {
     } else {
       this.tipoFecha = 'mes';
     }
-  }
-
-  testardo(): void {
-    console.log(this.clickDate);
   }
 }

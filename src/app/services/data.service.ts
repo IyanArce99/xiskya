@@ -99,6 +99,11 @@ export class DataService {
     return this._firestore.collection('eventos').add(event);
   }
 
+  //Editar evento
+  editarEvento(id:string, event:Events): Promise<any>{
+    return this._firestore.collection('eventos').doc(id).update(event);
+  }
+
   //Ver evento usando snapshotchanges asi cambia en tiempo real
   getEventos(): Observable <any> {
     return this._firestore.collection('eventos').snapshotChanges();

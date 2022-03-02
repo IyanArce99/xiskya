@@ -7,6 +7,7 @@ import { AddEventComponent } from '../components/add-event/add-event.component';
 import { Events } from '../modelos/Event';
 import { DataService } from '../services/data.service';
 import { ModalMostrarCalendarioPage } from '../pages/modal-mostrar-calendario/modal-mostrar-calendario.page';
+import { EditEventComponent } from '../components/edit-event/edit-event.component';
 
 @Component({
   selector: 'app-tab2',
@@ -69,10 +70,9 @@ export class Tab2Page {
   agregarEventos() {
     this.events = [];
     this.eventosCalendario.forEach(element => {
-      const horasDiferencia = element.dateEnd.getHours() - element.dateStart.getHours();
       this.events.push({
         start: addHours(startOfDay(element.dateStart), element.dateStart.getHours()),
-        end: addHours(element.dateEnd, horasDiferencia),
+        end: addHours(element.dateEnd,0),
         title: element.name,
         cssClass: 'custom-event',
         color: {
@@ -83,7 +83,8 @@ export class Tab2Page {
           beforeStart: true,
           afterEnd: true
         },
-        draggable: true
+        draggable: true,
+        id: element.id
       })
 
       DataService.addEvent(this.events);
@@ -92,9 +93,21 @@ export class Tab2Page {
 
   //modal agregar eventos
   async presentModal(value) {
-    console.log(value);
     const modal = await this.modalController.create({
       component: AddEventComponent,
+      cssClass: 'my-custom-class',
+      swipeToClose: true,
+      componentProps: {
+        'dato': value
+      }
+    });
+    return await modal.present();
+  }
+
+  //modal agregar eventos
+  async editModalEvent(value) {
+    const modal = await this.modalController.create({
+      component: EditEventComponent,
       cssClass: 'my-custom-class',
       swipeToClose: true,
       componentProps: {

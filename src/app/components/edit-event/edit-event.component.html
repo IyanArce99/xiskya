@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismissModalCancel()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="title">Editar evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="eventForm">
+    <div class="event-data -bc-p-2">
+      <ion-list lines=none>
+        <ion-item>
+          <ion-input placeholder="Nombre del evento" formControlName="name"></ion-input>
+        </ion-item>
+        <ion-item-divider class='-bc-p-2'></ion-item-divider>
+        <ion-item>
+          <ion-label>Inicio</ion-label>
+          <ion-datetime display-format="MMM DD, YYYY HH:mm" picker-format="MMM DD, YYYY HH:mm" mode='md' 
+          formControlName="dateStart" (ionChange)="eventoCorrecto()"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>Fin</ion-label>
+          <ion-datetime display-format="MMM DD, YYYY HH:mm" picker-format="MMM DD, YYYY HH:mm" mode='md' 
+          formControlName="dateEnd" (ionChange)="eventoCorrecto()"></ion-datetime>
+        </ion-item>
+        <ion-item *ngIf="eventSuccess == false && errorTexto != ''">
+          <span class="spanError"> {{errorTexto}} </span>
+        </ion-item>
+      </ion-list>
+
+      <div class="button" (click)="editEvent()" id="botonEvento">Editar evento</div>
+    </div>
+  </form>
+
+</ion-content>

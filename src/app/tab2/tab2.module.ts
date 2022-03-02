@@ -16,6 +16,7 @@ import { AddEventComponent } from '../components/add-event/add-event.component';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { ModalMostrarCalendarioPage } from '../pages/modal-mostrar-calendario/modal-mostrar-calendario.page';
+import { EditEventComponent } from '../components/edit-event/edit-event.component';
 
 
 
@@ -31,7 +32,7 @@ registerLocaleData(localeEs);
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
     ReactiveFormsModule
   ],
-  declarations: [Tab2Page, CalendarComponent, AddEventComponent, ModalMostrarCalendarioPage],
+  declarations: [Tab2Page, CalendarComponent, AddEventComponent, ModalMostrarCalendarioPage, EditEventComponent],
   entryComponents: [ModalMostrarCalendarioPage]
 
 })

@@ -7,14 +7,14 @@ import { Events } from 'src/app/modelos/Event';
 import { ErrorService } from '../../services/error.service';
 
 @Component({
-  selector: 'app-add-event',
-  templateUrl: './add-event.component.html',
-  styleUrls: ['./add-event.component.scss'],
+  selector: 'app-edit-event',
+  templateUrl: './edit-event.component.html',
+  styleUrls: ['./edit-event.component.scss'],
 })
-export class AddEventComponent implements OnInit {
+export class EditEventComponent implements OnInit {
   @Input() dato;
   //variables
-  start: string = "2021-02-18T08:08:00.006Z";
+  start: string = "2021-02-19T09:00:00.556Z";
   end: string = "2021-02-19T09:00:00.556Z";
   eventSuccess: boolean = false;
   errorTexto:string = '';
@@ -33,13 +33,10 @@ export class AddEventComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*if (DataService.dateSelected) {
-      this.start = DataService.dateSelected;
-      this.end = DataService.dateSelected;
-    }*/
-    if(this.dato != undefined){
-      this.eventForm.get("dateStart").setValue(this.dato.date.toString());
-      this.eventForm.get("dateEnd").setValue(this.dato.date.toString());
+    if(this.dato){
+      this.eventForm.get("dateStart").setValue(this.dato.start.toISOString());
+      this.eventForm.get("dateEnd").setValue(this.dato.end.toISOString());
+      this.eventForm.get("name").setValue(this.dato.title);
     }
   }
 
@@ -61,38 +58,37 @@ export class AddEventComponent implements OnInit {
         this.errorTexto = this._errorService.errorCalendar('eventEnd');
         //ponemos el evento como falso para que no se pueda crear
         this.eventSuccess = false;
-        //console.log(this.errorTexto);
       } else {
         //comprobamos que el evento se realiza el mismo año
         if (eventoComienzo.getFullYear() == eventoFinal.getFullYear()) {
           if (eventoComienzo.getMonth() == eventoFinal.getMonth()) {
             if (eventoComienzo.getDay() == eventoFinal.getDay()) {
               this.eventSuccess = true;
-              //console.log("evento correcto");
+              //"evento correcto";
             } else {
               this.errorTexto = this._errorService.errorCalendar('eventDay');
               this.eventSuccess = false;
-              //console.log("Los dias del evento son distintos");
+              //"Los dias del evento son distintos";
             }
           } else {
             this.errorTexto = this._errorService.errorCalendar('eventMonth');
             this.eventSuccess = false;
-            //console.log("Los meses del evento son distintos");
+            //"Los meses del evento son distintos";
           }
         } else {
           this.errorTexto = this._errorService.errorCalendar('eventYear');
           this.eventSuccess = false;
-          //console.log("Los años del evento son distintos");
+          //"Los años del evento son distintos";
         }
       }
     } else {
       this.errorTexto = this._errorService.errorCalendar('eventNow');
       this.eventSuccess = false;
-      //console.log("Evento antes de la fecha actual");
+      //"Evento antes de la fecha actual";
     }
   }
 
-  addEvent() {
+  editEvent(){
     if (this.eventSuccess == true) {
       const name = this.eventForm.get('name').value;
       const dateStart = new Date(this.eventForm.get('dateStart').value);
@@ -104,7 +100,9 @@ export class AddEventComponent implements OnInit {
         dateEnd: dateEnd
       })
 
-      this._dataService.crearEvento(this.evento).then(data => {
+      console.log(this.evento);
+
+      this._dataService.editarEvento(this.dato.id,this.evento).then(data => {
         this.dismissModal();
       }).catch(error => {
         console.log(error);
@@ -119,30 +117,13 @@ export class AddEventComponent implements OnInit {
         data.present();
       })
     }
-    /*let obj = {
-      start: new Date(this.start),
-      end: new Date(this.end),
-      title: '',
-      allDay: '',
-      cssClass: 'custom-event',
-      color: {
-        primary: '#488aff',
-        secondary: '#bbd0f5'
-      },
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    }
-    DataService.addEvent(obj);*/
   }
 
   dismissModal(): void {
     DataService.dateSelected = null;
 
     let toast = this.toastController.create({
-      message: 'Evento agregado correctamente',
+      message: 'Evento editado correctamente',
       duration: 1500,
       position: 'bottom',
       color: 'success'
@@ -156,4 +137,5 @@ export class AddEventComponent implements OnInit {
   dismissModalCancel():void{
     this.modalController.dismiss();
   }
+
 }

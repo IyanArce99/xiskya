@@ -6,7 +6,7 @@
 </div>
 
 <mwl-calendar-month-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "month"' [viewDate]="viewDate"
-  [events]="getEvents()" (eventClicked)='test($event)' (dayClicked)='dayClicked($event.day)'
+  [events]="getEvents()" (eventClicked)='editEvent($event)' (dayClicked)='dayClicked($event.day)'
   [weekStartsOn]="weekStartsOn" [locale]="locale" [activeDayIsOpen]="activeDayIsOpen">
 </mwl-calendar-month-view>
 

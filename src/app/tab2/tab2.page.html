@@ -10,5 +10,5 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-calendar (_addEvent)='presentModal($event)'></app-calendar>
+  <app-calendar (_addEvent)='presentModal($event)' (_editEvent)='editModalEvent($event)'></app-calendar>
 </ion-content>
