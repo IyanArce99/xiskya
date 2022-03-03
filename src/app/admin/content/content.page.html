@@ -40,7 +40,7 @@
           <button class="boton"><i class="fas fa-edit editar" [routerLink]="['/admin/update-content', contenido.id]"></i></button>
         </div>
       </div>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
     </div>
 
     <!--Div crear contenido-->
