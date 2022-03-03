@@ -30,6 +30,18 @@ ion-icon {
         display: flex;
         justify-content: center;
         border-radius: 4px;
+        background: lightblue;
+        color: var(--principal-2);
+        font-weight: 600;
+    }
+
+    .buttonCancel {
+        width: auto;
+        margin-top: 5px;
+        padding: 12px;
+        display: flex;
+        justify-content: center;
+        border-radius: 4px;
         background: white;
         color: var(--principal-2);
         font-weight: 600;

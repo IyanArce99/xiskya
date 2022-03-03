@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { CalendarEventTimesChangedEvent, CalendarEvent } from 'angular-calendar';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { AddEventComponent } from '../components/add-event/add-event.component';
 import { Events } from '../modelos/Event';
 import { DataService } from '../services/data.service';
 import { ModalMostrarCalendarioPage } from '../pages/modal-mostrar-calendario/modal-mostrar-calendario.page';
 import { EditEventComponent } from '../components/edit-event/edit-event.component';
+import { User } from '../modelos/User';
 
 @Component({
   selector: 'app-tab2',
@@ -24,6 +25,8 @@ export class Tab2Page {
   isDragging: boolean = false;
 
   refresh: Subject<any> = new Subject();
+
+  usuarioLogin: User = undefined;
 
   /*events: CalendarEvent[] = [
     {
@@ -45,7 +48,7 @@ export class Tab2Page {
 
   events: CalendarEvent[] = [];
 
-  constructor(public modalController: ModalController, private _dataService: DataService) { }
+  constructor(public modalController: ModalController, private _dataService: DataService, private toastController: ToastController) { }
 
   //mostrarEventos
   getEvents() {
@@ -72,7 +75,7 @@ export class Tab2Page {
     this.eventosCalendario.forEach(element => {
       this.events.push({
         start: addHours(startOfDay(element.dateStart), element.dateStart.getHours()),
-        end: addHours(element.dateEnd,0),
+        end: addHours(element.dateEnd, 0),
         title: element.name,
         cssClass: 'custom-event',
         color: {
@@ -93,31 +96,55 @@ export class Tab2Page {
 
   //modal agregar eventos
   async presentModal(value) {
-    const modal = await this.modalController.create({
-      component: AddEventComponent,
-      cssClass: 'my-custom-class',
-      swipeToClose: true,
-      componentProps: {
-        'dato': value
-      }
-    });
-    return await modal.present();
+    if (this.usuarioLogin.range != 0) {
+      const modal = await this.modalController.create({
+        component: AddEventComponent,
+        cssClass: 'my-custom-class',
+        swipeToClose: true,
+        componentProps: {
+          'dato': value
+        }
+      });
+      return await modal.present();
+    } else {
+      let toast = this.toastController.create({
+        message: 'Se requieren permisos de administrador',
+        duration: 1500,
+        position: 'bottom',
+        color: 'danger'
+      }).then((data) => {
+        data.present();
+      })
+    }
+
   }
 
   //modal agregar eventos
   async editModalEvent(value) {
-    const modal = await this.modalController.create({
-      component: EditEventComponent,
-      cssClass: 'my-custom-class',
-      swipeToClose: true,
-      componentProps: {
-        'dato': value
-      }
-    });
-    return await modal.present();
+    if (this.usuarioLogin.range != 0) {
+      const modal = await this.modalController.create({
+        component: EditEventComponent,
+        cssClass: 'my-custom-class',
+        swipeToClose: true,
+        componentProps: {
+          'dato': value
+        }
+      });
+      return await modal.present();
+    } else {
+      let toast = this.toastController.create({
+        message: 'Se requieren permisos de administrador',
+        duration: 1500,
+        position: 'bottom',
+        color: 'danger'
+      }).then((data) => {
+        data.present();
+      })
+    }
   }
 
   ngOnInit(): void {
+    this.usuarioLogin = JSON.parse(localStorage.getItem('user-complete'));
     this.getEvents();
   }
 }

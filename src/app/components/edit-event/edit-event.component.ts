@@ -16,15 +16,15 @@ export class EditEventComponent implements OnInit {
   //variables
   start: string = "2021-02-19T09:00:00.556Z";
   end: string = "2021-02-19T09:00:00.556Z";
-  eventSuccess: boolean = false;
-  errorTexto:string = '';
+  eventSuccess: boolean = true;
+  errorTexto: string = '';
   //formulario evento
   eventForm: FormGroup;
   //evento
   evento: Events;
 
   constructor(public modalController: ModalController, private fb: FormBuilder, private _dataService: DataService, private toastController: ToastController,
-    private _errorService:ErrorService) {
+    private _errorService: ErrorService) {
     this.eventForm = this.fb.group({
       name: ['', Validators.required],
       dateStart: [this.start, Validators.required],
@@ -33,7 +33,7 @@ export class EditEventComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.dato){
+    if (this.dato) {
       this.eventForm.get("dateStart").setValue(this.dato.start.toISOString());
       this.eventForm.get("dateEnd").setValue(this.dato.end.toISOString());
       this.eventForm.get("name").setValue(this.dato.title);
@@ -88,7 +88,7 @@ export class EditEventComponent implements OnInit {
     }
   }
 
-  editEvent(){
+  editEvent() {
     if (this.eventSuccess == true) {
       const name = this.eventForm.get('name').value;
       const dateStart = new Date(this.eventForm.get('dateStart').value);
@@ -100,14 +100,12 @@ export class EditEventComponent implements OnInit {
         dateEnd: dateEnd
       })
 
-      console.log(this.evento);
-
-      this._dataService.editarEvento(this.dato.id,this.evento).then(data => {
+      this._dataService.editarEvento(this.dato.id, this.evento).then(data => {
         this.dismissModal();
       }).catch(error => {
         console.log(error);
       })
-    }else{
+    } else {
       let toast = this.toastController.create({
         message: 'Evento incorrecto',
         duration: 1500,
@@ -117,6 +115,25 @@ export class EditEventComponent implements OnInit {
         data.present();
       })
     }
+  }
+
+  deleteEvent() {
+    //procedemos a borrar el evento a partir del id
+    this._dataService.borrarEvento(this.dato.id).then(result=>{
+      let toast = this.toastController.create({
+        message: 'Evento eliminado',
+        duration: 1500,
+        position: 'bottom',
+        color: 'success'
+      }).then((data) => {
+        data.present();
+      })
+
+      this.dismissModalCancel();
+    }).catch(error=>{
+      console.log(error);
+    })
+
   }
 
   dismissModal(): void {
@@ -134,7 +151,7 @@ export class EditEventComponent implements OnInit {
     this.modalController.dismiss();
   }
 
-  dismissModalCancel():void{
+  dismissModalCancel(): void {
     this.modalController.dismiss();
   }
 
