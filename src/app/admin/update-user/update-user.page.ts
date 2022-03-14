@@ -11,6 +11,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { ToastController } from '@ionic/angular';
+import { format, parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-update-user',
@@ -103,9 +104,6 @@ export class UpdateUserPage implements OnInit {
 
   //metodo para actualizar el usuario
   actualizarImagen() {
-    console.log("nueva imagen", this.file);
-    console.log("primera imagen", this.imagenOriginal);
-
     if (this.file === this.imagenOriginal) {
       //metodo actualizar usuario
       this.editarUsuario();
@@ -142,6 +140,11 @@ export class UpdateUserPage implements OnInit {
   }
 
   editarUsuario(){
+    let birthday = this.agregarUsuariosForm.get("birthday").value;
+    birthday = format(parseISO(birthday), 'yyyy-MM-dd');
+    
+    this.agregarUsuariosForm.get("birthday").setValue(birthday);
+
     this._dataService.editarUsuario(this.idUpdate, this.agregarUsuariosForm.value).then(result => {
       let toast = this.toastCtrl.create({
         message: 'Usuario editado correctamente',

@@ -10,7 +10,157 @@
 </ion-header>
 
 <ion-content>
-  <div id="parrafo" class="p-20">
-    <p>{{desc}}</p>
+  <div id="parrafo" class="p-20" *ngIf="title == 'Ofrecimiento diario'">
+    <p>Dios, Padre nuestro, <br>
+      Yo te ofrezco toda mi jornada, <br>
+      Mis oraciones, pensamientos, afectos y deseos, <br>
+      Palabras, obras, alegrías y sufrimientos, <br>
+      En unión con tu Hijo Jesucristo, <br>
+      Que sigue ofreciéndose a ti <br>
+      En la Eucaristía, por la salvación del mundo.</p>
+
+    <p>Que el Espíritu Santo que guió a Jesús <br>
+      Sea mi guía y mi fuerza en este día, <br>
+      Para que pueda ser testigo de tu amor.</p>
+
+    <p>Con María, la Madre del Señor y de la Iglesia, <br>
+      Te pido especialmente por las intenciones <br>
+      Del Papa y de nuestros Obispos para este mes.</p>
+  </div>
+
+  <div id="parrafo" class="p-20" *ngIf="title == 'Angelus'">
+    <p>
+      <b>V.</b> El Ángel del Seńor anunció a María. <br>
+      <b>R.</b> Y concibió por obra del Espíritu Santo. Dios te salve, María... Santa María... <br>
+      <b>V.</b> He aquí la esclava del Seńor. <br>
+      <b>R.</b> Hágase en mí según tu palabra. Dios te salve, María... Santa María... <br>
+      <b>V.</b> Y el Verbo se hizo carne. <br>
+      <b>R.</b> Y habitó entre nosotros. Dios te salve, María... Santa María... <br>
+      <b>V.</b> Ruega por nosotros, santa Madre de Dios. <br>
+      <b>R.</b> Para que seamos dignos de alcanzar las promesas de Cristo. <br>
+      <b>Oremos:</b> Derrama, Seńor, tu gracia sobre nosotros, que, por el anuncio del Ángel, hemos conocido la
+      encarnación de tu Hijo, para que lleguemos,
+      por su pasión y su cruz, a la gloria de la resurrección. Por Jesucristo, nuestro Seńor. <br>
+      <b>R.</b> Amén.
+    </p>
+  </div>
+
+  <div id="parrafo" class="p-20" *ngIf="title == 'Regina coeli'">
+    <p>
+      Durante el tiempo pascual, en lugar del Ángelus, se dice el Regina coeli: <br>
+      <b>V.</b> Reina del cielo, alégrate. <br>
+      <b>R.</b> Aleluya. <br>
+      <b>V.</b> Porque el Señor, a quien mereciste llevar. <br>
+      <b>R.</b> Aleluya. <br>
+      <b>V.</b> Ha resucitado, como lo había dicho. <br>
+      <b>R.</b> Aleluya. <br>
+      <b>V.</b> Ruega al Señor por nosotros. <br>
+      <b>R.</b> Aleluya <br>
+      <b>V.</b> Goza y alégrate, Virgen María. Aleluya. <br>
+      <b>R.</b> Porque verdaderamente ha resucitado el Señor. Aleluya. <br>
+      <b>Oremos:</b> Oh Dios, que por la resurrección de tu Hijo, nuestro Señor Jesucristo, has llenado el mundo de
+      alegría, concédenos, por intercesión de su Madre,
+      la Virgen María, llegar a alcanzar los gozos eternos. Por el mismo Jesucristo, nuestro Señor. <br>
+      <b>R.</b> Amén.
+    </p>
+  </div>
+
+  <div id="parrafo" class="p-20" *ngIf="title == 'Rosario'">
+    <p>
+      <b>Gozosos o de gozo:</b> <br>
+      <b>1.</b> El anuncio del ángel a la Virgen María <br>
+      <b>2.</b> La visita de María a su prima Isabel <br>
+      <b>3.</b> El nacimiento de Jesús <br>
+      <b>4.</b> La presentación de Jesús en el Templo <br>
+      <b>5.</b> Jesús perdido y hallado en el templo. <br>
+      <b>Dolorosos:</b> <br>
+      <b>1.</b> La oración de Jesús en el huerto de Getsemaní <br>
+      <b>2.</b> La flagelación de Jesús <br>
+      <b>3.</b> La coronación de espinas <br>
+      <b>4.</b> Jesús lleva la cruz a cuestas <br>
+      <b>5.</b> Crucifixión y muerte de Jesús. <br>
+      <b>Luminosos:</b> <br>
+      <b>1.</b> El bautismo de Jesús <br>
+      <b>2.</b> La autorrevelación de Jesús en las bodas de Caná <br>
+      <b>3.</b> El anuncio del Reino de Dios <br>
+      <b>4.</b> La transfiguración de Jesús <br>
+      <b>5.</b> La institución de la Eucaristía. <br>
+      <b>Gloriosos:</b> <br> 
+      <b>1.</b> La resurrección de Jesús <br>
+      <b>2.</b> La ascensión de Jesús <br>
+      <b>3.</b> La venida del Espíritu Santo <br>
+      <b>4.</b> La asunción de María. <br>
+      <b>5.</b> La coronación de la Virgen. <br>
+      <b>Letanías luteranas:</b> <br>
+      Señor, ten piedad <br>
+      Cristo, ten piedad <br>
+      Señor, ten piedad <br>
+      Cristo, óyenos <br>
+      Cristo, escúchanos <br>
+      Dios, Padre celestial <br>
+      Dios, Hijo Redentor del mundo <br>
+      Dios, Espíritu Santo <br>
+      Trinidad santa, un solo Dios <br>
+      Santa María <br>
+      Santa Madre de Dios <br>
+      Santa Virgen de las Vírgenes <br>
+      Madre de Cristo <br>
+      Madre de la Iglesia <br>
+      Madre de la Divina Gracia <br>
+      Madre purísima <br>
+      Madre castísima <br>
+      Madre y Virgen <br>
+      Madre sin mancha <br>
+      Madre inmaculada <br>
+      Madre amable <br>
+      Madre admirable <br>
+      Madre del buen consejo <br>
+      Madre del Creador <br>
+      Madre del Salvador <br>
+      Virgen prudentísima <br>
+      Virgen digna de veneración <br>
+      Virgen poderosa <br>
+      Virgen acogedora <br>
+      Virgen fiel <br>
+      Ideal de santidad <br>
+      Trono de sabiduría <br>
+      Causa de nuestra alegría <br>
+      Templo del Espíritu Santo <br>
+      Obra maestra de la gracia <br>
+      Modelo de entrega a Dios <br>
+      Rosa escogida <br>
+      Fuerte como la torre de David <br>
+      Hermosa como torre de marfil <br>
+      Casa de oro <br>
+      Arca de la Nueva Alianza <br>
+      Puerta del cielo <br>
+      Estrella de la mañana <br>
+      Salud de los enfermos <br>
+      Refugio de los pecadores <br>
+      Consoladora de los tristes <br>
+      Auxilio de los cristianos <br>
+      Reina de los Ángeles <br>
+      Reina de los Patriarcas <br>
+      Reina de los Profetas <br>
+      Reina de los Apóstoles <br>
+      Reina de los Mártires <br>
+      Reina de los confesores de la fe <br>
+      Reina de las Vírgenes <br>
+      Reina de todos los Santos <br>
+      Reina concebida sin pecado original <br>
+      Reina llevada al cielo <br>
+      Reina del Santo Rosario <br>
+      Reina de la Familia <br>
+      Reina de la paz <br>
+      Cordero de Dios que quitas el pecado del mundo, perdónanos, Señor. <br>
+      Cordero de Dios que quitas el pecado del mundo, escúchanos, Señor. <br>
+      Cordero de Dios que quitas el pecado del mundo, ten piedad de nosotros. <br>
+      <b>Oración final:</b> <br>
+      Te rogamos, Señor, que nos concedas a nosotros tus siervos, gozar de perpetua salud de alma y cuerpo y, por la
+      gloriosa intercesión de la bienaventurada
+      Virgen María, seamos librados de la tristeza presente y disfrutemos de la eterna alegría. Por Cristo nuestro
+      Señor. <br>
+      Amén.
+    </p>
   </div>
 </ion-content>

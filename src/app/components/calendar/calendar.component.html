@@ -19,6 +19,10 @@
   [events]="getEvents()" (eventClicked)='test($event)' (hourSegmentClicked)='dayClicked($event)' [locale]="locale">
 </mwl-calendar-day-view>
 
+<mwl-calendar-day-view *ngIf='arrayTypesCalendar[indexTypeCalendar] != "day"' [viewDate]="viewDate"
+  [events]="getEvents()" (eventClicked)='test($event)' (hourSegmentClicked)='dayClicked($event)' [locale]="locale">
+</mwl-calendar-day-view>
+
 <ion-fab class="add-event">
   <ion-fab-button (click)='openModalAddEvent()'>
     <ion-icon name="add"></ion-icon>

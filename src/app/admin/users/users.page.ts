@@ -11,6 +11,7 @@ import { ToastController } from '@ionic/angular';
 import { Message } from 'src/app/modelos/Message';
 import { ModalController } from '@ionic/angular';
 import { ModalResetPage } from '../../pages/modal-reset/modal-reset.page';
+import { format, parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-users',
@@ -46,7 +47,7 @@ export class UsersPage implements OnInit, OnDestroy {
       surname: ['', Validators.required],
       numberCongress: ['', Validators.required],
       location: ['', [Validators.required, Validators.maxLength(10)]],
-      birthday: ['', Validators.required],
+      birthday: ['2008-09-02', Validators.required],
       imagePath: [''],
       range: [0, Validators.required],
     }), this.tipoPassword = true;
@@ -123,10 +124,12 @@ export class UsersPage implements OnInit, OnDestroy {
     const surname = this.agregarUsuariosForm.get("surname").value;
     const numberCongress = this.agregarUsuariosForm.get("numberCongress").value;
     const location = this.agregarUsuariosForm.get("location").value;
-    const birthday = this.agregarUsuariosForm.get("birthday").value;
+    let birthday = this.agregarUsuariosForm.get("birthday").value;
     const imagePath = this.agregarUsuariosForm.get("imagePath").value;
     const range = this.agregarUsuariosForm.get("range").value;
     const password = this.agregarUsuariosForm.get("password").value;
+
+    birthday = format(parseISO(birthday), 'yyyy-MM-dd');
 
     this.usuario = {
       email: email,
@@ -170,7 +173,7 @@ export class UsersPage implements OnInit, OnDestroy {
         surname: '',
         numberCongress: '',
         location: '',
-        birthday: '',
+        birthday: '2008-09-02',
         imagePath: '',
         range: 0
       })

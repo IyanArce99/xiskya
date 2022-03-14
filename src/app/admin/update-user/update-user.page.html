@@ -73,12 +73,12 @@
             </span>
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input numero congreso-->
-            <input type="number" class="form-control form-control mb-2" placeholder="Numero congreso"
+            <input type="number" class="form-control form-control mb-2" placeholder="Numero congregación"
               formControlName="numberCongress">
             <!--Comprobacion validacion de campo numberCongress rellenado-->
             <span class="text-danger"
               *ngIf="agregarUsuariosForm.get('numberCongress')?.hasError('required') && agregarUsuariosForm.get('numberCongress')?.touched">
-              El numero de congreso es requerido
+              El numero de congregación es requerido
             </span>
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input localizacion-->
@@ -96,7 +96,7 @@
             </span>
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input cumpleaños-->
-            <input type="date" class="datePicker" placeholder="Cumpleaños" formControlName="birthday">
+            <ion-datetime formControlName="birthday" class="datePicker" display-format="YYYY-MM-DD" picker-format="YYYY-MM-DD"></ion-datetime>
             <span class="nacimientoSpan mb-2">Fecha de nacimiento*</span>
             <!--Comprobacion validacion de campo cumpleañs rellenado-->
             <span class="text-danger"
@@ -108,7 +108,7 @@
             <select class="form-control form-control mb-2" formControlName="range">
               <option value="0">Usuario estandar</option>
               <option value="1">Usuario administrador</option>
-              <option value="2">Usuario intermedio</option>
+              <option value="2">Usuario creador</option>
             </select>
             <!-------------------------------------------------------------------------------------------------------->
             <!--Input imagenes-->
