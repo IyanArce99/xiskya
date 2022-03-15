@@ -11,7 +11,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <div class="wrapper">
     <!--Div actualizar contenido-->
     <!------------------------------------------------------------------------------------------------------------------>
@@ -34,14 +34,13 @@
               El subtitulo es requerido
             </span>
             <!--Textarea contenido-->
-            <textarea class="form-control form-control-lg mb-2" rows="5" placeholder="Contenido"
-              formControlName="content"></textarea>
+            <div [ngxSummernote]="config" formControlName="content"></div>
             <span class="text-danger"
               *ngIf="contenidoForm.get('content')?.hasError('required') && contenidoForm.get('content')?.touched">
               El contenido es requerido
             </span>
             <!--Select enum-->
-            <select class="form-control form-control-lg mb-2" formControlName="type" (change)="mostrarBotonPdf()">
+            <select class="form-control form-control-lg my-2" formControlName="type" (change)="mostrarBotonPdf()">
               <option value="0">Circular</option>
               <option value="1">Noticia</option>
               <option value="2">Revista</option>

@@ -35,9 +35,13 @@
               "node_modules/angular-calendar/css/angular-calendar.css",
               "src/theme/variables.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/summernote/dist/summernote-lite.min.css",
               "src/global.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/summernote/dist/summernote-lite.min.js"
+            ],
             "aot": false,
             "vendorChunk": true,
             "extractLicenses": false,

@@ -11,7 +11,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <div class="wrapper">
     <div class="filters mb-10">
       <div class="filter mr-10" (click)="seleccionarApartado(0)" [ngClass]="{'active':selector === 0}">Ver contenido</div>
@@ -32,7 +32,7 @@
                 <span class="badge bg-success" *ngIf="contenido.type==2">Revista</span>
               </div>
             </div>
-            <div class="short_desc">{{contenido.content | slice:0:80}}...</div>
+            <div class="short_desc" [innerHTML]="contenido.content | slice:0:100"></div>
           </div>
         </div>
         <div class="mt-2">
@@ -63,15 +63,14 @@
               *ngIf="contenidoForm.get('subtitle')?.hasError('required') && contenidoForm.get('subtitle')?.touched">
               El subtitulo es requerido
             </span>
-            <!--Textarea contenido-->
-            <textarea class="form-control form-control-lg mb-2" rows="5" placeholder="Contenido"
-              formControlName="content"></textarea>
+            <!--Summernote contenido-->
+            <div [ngxSummernote]="config" formControlName="content"></div>
             <span class="text-danger"
               *ngIf="contenidoForm.get('content')?.hasError('required') && contenidoForm.get('content')?.touched">
               El contenido es requerido
             </span>
             <!--Select enum-->
-            <select class="form-control form-control-lg mb-2" formControlName="type" (change)="comprobarContenido(contenidoForm.value.type)">
+            <select class="form-control form-control-lg my-2" formControlName="type" (change)="comprobarContenido(contenidoForm.value.type)">
               <option value="0">Circular</option>
               <option value="1">Noticia</option>
               <option value="2">Revista</option>

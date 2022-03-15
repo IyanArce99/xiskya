@@ -37,7 +37,6 @@ export class Tab5Page implements AfterViewInit {
 
     this._dataService.getUsuarioPorId(datoUsuario.id).subscribe(
       result => {
-        console.log(result.data());
         this.usuario = result.data();
 
         this.usuarioForm.get("location").setValue(this.usuario.location);

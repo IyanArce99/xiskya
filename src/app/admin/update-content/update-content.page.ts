@@ -16,6 +16,16 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['./update-content.page.scss'],
 })
 export class UpdateContentPage implements OnInit {
+  config = {
+    placeholder: 'Contenido',
+    tabsize: 2,
+    height: '200px',
+    toolbar: [
+        ['font', ['bold', 'italic', 'underline', 'strikethrough','clear']],
+        ['fontsize', ['fontname', 'fontsize', 'color']],
+    ]
+  }
+
   //Variables
   contenidoForm: FormGroup;
   idUpdate: string;
@@ -75,8 +85,10 @@ export class UpdateContentPage implements OnInit {
           pdfPath: result.data().pdfPath
         })
 
-        if (result.data().type == 2) {
+        if (result.data().type != 1) {
           this.mostrarPdf = true;
+        }else{
+          this.mostrarPdf = false;
         }
 
         //guardamos en el archivo file y en el archivo imagenOriginal la ruta de la imagen actual

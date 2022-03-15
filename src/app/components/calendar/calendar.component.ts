@@ -104,4 +104,8 @@ export class CalendarComponent implements OnInit {
       this.tipoFecha = 'mes';
     }
   }
+
+  closeOpenMonthViewDay() {
+    this.activeDayIsOpen = false;
+  }
 }

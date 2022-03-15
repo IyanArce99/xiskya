@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Content } from 'src/app/modelos/Content';
 import { DataService } from 'src/app/services/data.service';
@@ -14,6 +14,16 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./content.page.scss'],
 })
 export class ContentPage implements OnInit {
+  config = {
+    placeholder: 'Contenido',
+    tabsize: 2,
+    height: '200px',
+    toolbar: [
+        ['font', ['bold', 'italic', 'underline', 'strikethrough','clear']],
+        ['fontsize', ['fontname', 'fontsize', 'color']],
+    ]
+  }
+
   //paginacion
   p: number = 1;
 
@@ -142,6 +152,7 @@ export class ContentPage implements OnInit {
       }).then((data) => {
         data.present();
       })
+      this.mostrarPdf = true;
 
       //llamamos al metodo para limpiar el contenido de la previsualizacion
       this.limpiarContenidoPrevisualizacion();

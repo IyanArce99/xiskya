@@ -1,8 +1,15 @@
+<div class="d-flex flex-column">
+  <span class="spanText">El icono <span class="blue">azul</span> muestra los eventos.</span>
+  <span class="spanText">El icono <span class="red">rojo</span> muestra la cantidad de eventos.</span>
+</div>
+
 <div class="-header-type">
-  <ion-icon name="chevron-back-outline" (click)='previousType()'></ion-icon>
+  <ion-icon name="chevron-back-outline" [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()"
+    mwlCalendarPreviousView></ion-icon>
   <!--<span>{{arrayTypesCalendar[indexTypeCalendar]}}</span>-->
-  <span> {{tipoFecha}} </span>
-  <ion-icon name="chevron-forward-outline" (click)='nextType()'></ion-icon>
+  <span> {{ viewDate | calendarDate:(view + 'ViewTitle'):'es' }} </span>
+  <ion-icon name="chevron-forward-outline" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+    (viewDateChange)="closeOpenMonthViewDay()"></ion-icon>
 </div>
 
 <mwl-calendar-month-view *ngIf='arrayTypesCalendar[indexTypeCalendar] === "month"' [viewDate]="viewDate"

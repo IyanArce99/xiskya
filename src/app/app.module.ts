@@ -11,7 +11,8 @@ import { AppComponent } from './app.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { AgmCoreModule } from '@agm/core';
+import { NgxSummernoteModule } from 'ngx-summernote';
+import { HttpClientModule } from '@angular/common/http';
 
 //Configuración firebase
 import { environment } from 'src/environments/environment';
@@ -33,10 +34,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     AngularFirestoreModule,
     NgxPaginationModule,
     AngularFireStorageModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBYnfwDOBxjnGzIJtUD5ErS_yeFBUvtF7o',
-      libraries: ["places"]   
-   })
+    NgxSummernoteModule,
+    HttpClientModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

@@ -8,6 +8,7 @@ import { ContentPageRoutingModule } from './content-routing.module';
 
 import { ContentPage } from './content.page';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxSummernoteModule } from 'ngx-summernote';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     IonicModule,
     ContentPageRoutingModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSummernoteModule
   ],
   declarations: [ContentPage]
 })

@@ -29,7 +29,7 @@
           <div class="elements">
             <div class="title">{{ contenido.title | slice:0:20 }}</div>
             <div class="subtitle">{{ contenido.subtitle | slice:0:20 }}</div>
-            <div class="short_desc">{{ contenido.content | slice:0:30 }}...</div>
+            <div class="short_desc" [innerHTML]="contenido.content | slice:0:50"></div>
           </div>
         </div>
       </div>
