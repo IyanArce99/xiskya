@@ -26,7 +26,7 @@
           <div [innerHTML]="html"></div>
         </div>
         <div class="col-12" *ngIf="contenido.pdfPath != ''">
-          <button class="botonPdf" (click)="descargarPdf()"> Descargar pdf</button>
+          <a [href]="contenido.pdfPath" download target="_blank"><button class="botonPdf"> Descargar pdf</button></a> 
         </div>
       </div>
     </div>
