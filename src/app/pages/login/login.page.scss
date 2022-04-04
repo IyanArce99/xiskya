@@ -1,5 +1,5 @@
 ion-content {
-    font-family: OpenSans;
+    font-family: 'Roboto';
     .wrapper {
         height: 100vh;
         background: var(--principal-1);
@@ -20,6 +20,7 @@ ion-content {
             h1 {
                 text-align: center;
                 color: white;
+                width: 80vw;
             }
             .input-box {
                 background: var(--principal-3);
@@ -28,25 +29,26 @@ ion-content {
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
-                border-radius: 5px 0px 0px 5px;
+                border-radius: 10px 10px 10px 10px;
                 i {
                     color: white;
-                    padding: 0 10px;
+                    padding: 0 20px;
                 }
                 input {
                     padding: 10px;
                     height: 100%;
                     width: 100%;
                     border: 0;
-                    border-radius: 0px 5px 5px 0px;
-                    color: white;
-                    background-color: black;
+                    border-radius: 0px 10px 10px 0px;
+                    color: #e8e8e8;
+                    background-color: #c4c4c4;
                 }
             }
             ion-button {
                 --background: var(--principal-2);
                 text-transform: uppercase;
                 letter-spacing: 1px;
+                border-radius: 50%;
             }
         }
     }
@@ -54,8 +56,26 @@ ion-content {
 
 ion-content .wrapper .enlace{
     text-decoration: none;
+    color: white;
 }
 
 ion-content .wrapper .text-danger{
     font-size: 16px;
+}
+
+h1{
+    font-weight: bold;
+}
+
+::placeholder { color: #e8e8e8; }
+
+.boton{
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    background-color: #e24d33;
+    border: 1px solid #e24d33;
+    font-size: 18px;
+    margin-top: 5px;
 }

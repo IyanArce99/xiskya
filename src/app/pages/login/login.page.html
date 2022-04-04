@@ -7,7 +7,7 @@
       <h1>Iniciar sesión</h1>
       <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
         <div class="input-box">
-          <i class="fas fa-user"></i>
+          <i></i>
           <input type="text" name="" id="" placeholder="Usuario" formControlName="usuario">
         </div>
         <!--Mostramos errores para el correo-->
@@ -21,7 +21,7 @@
         </span>
 
         <div class="input-box">
-          <i class="fas fa-lock"></i>
+          <i></i>
           <input type="password" name="" id="" placeholder="Contraseña" formControlName="password">
         </div>
         <!--Mostramos errores para la contraseña-->
@@ -30,11 +30,14 @@
           La contraseña es requerida
         </span>
 
-        <div class="text-center">
+        <div class="text-center mt-5">
           <a routerLink="/recover-password" class="enlace">Recuperar contraseña</a>
         </div>
 
-        <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</ion-button>
+        <div class="d-flex justify-content-center">
+          <button class="boton" type="submit" [disabled]="!loginForm.valid"> INICIAR SESIÓN </button>
+        </div>
+
       </form>
     </div>
     <p class="text-danger"><span *ngIf="errorComprobar">{{errorTexto}}</span></p>
