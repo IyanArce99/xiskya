@@ -19,7 +19,7 @@ export class UpdateContentPage implements OnInit {
   config = {
     placeholder: 'Contenido',
     tabsize: 2,
-    height: '200px',
+    height: 200,
     toolbar: [
         ['font', ['bold', 'italic', 'underline', 'strikethrough','clear']],
         ['fontsize', ['fontname', 'fontsize', 'color']],
