@@ -1,6 +1,6 @@
 ion-toolbar {
     --border-style: none;
-    --background: #4c5361;
+    --background: #4C5461;
     color: white;
 }
 
@@ -14,22 +14,37 @@ ion-title{
 }
 
 .textoTitulo{
+    font-size: 32px;
     font-weight: bold;
+    line-height: 32px;
+    margin-bottom: 15px;
+}
+
+hr{
+    border-bottom: 1px solid lightgray;
 }
 
 .textoSubtitulo{
-    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: bold;
 }
 
 .icono{
     font-size: 25px;
     color: white;
     vertical-align: super;
+    margin-right: 10px;
 }
 
 .boton{
-    background: none;
-    padding-right: 0;
+    display: flex;
+    align-items: center;
+    background: #768096;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 25px;
 }
 
 .botonPdf {
@@ -38,4 +53,12 @@ ion-title{
     padding: 0.5rem;
     margin-bottom: 10px;
     border-radius: 5px;
+}
+
+.textoParrafo{
+    font-weight: 450;
+}
+
+*{
+    font: 'Roboto';
 }

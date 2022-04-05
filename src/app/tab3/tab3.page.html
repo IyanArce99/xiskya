@@ -14,8 +14,8 @@
     <div class="wrapper">
       <h2>Filtrar por</h2>
       <div class="filters">
-        <div class="filter mr-10" (click)="filtrarContenido(0)" [ngClass]="{'active':selector === 0}">Circulares</div>
-        <div class="filter mr-10" (click)="filtrarContenido(1)" [ngClass]="{'active':selector === 1}">Noticias</div>
+        <div class="filter margen" (click)="filtrarContenido(0)" [ngClass]="{'active':selector === 0}">Circulares</div>
+        <div class="filter margen" (click)="filtrarContenido(1)" [ngClass]="{'active':selector === 1}">Noticias</div>
         <div class="filter" (click)="filtrarContenido(2)" [ngClass]="{'active':selector === 2}">Revistas</div>
       </div>
 
@@ -23,13 +23,13 @@
         <div *ngFor="let contenido of contenidoFiltrado | paginate: { itemsPerPage: 3, currentPage: p }"
           class="notice mt-20" [routerLink]="['/tabs/tab-content', contenido.id]">
           <div class="img">
-            <img src="/assets/blog/test.jpg" alt="" *ngIf="contenido.imagePath == ''">
-            <img [src]="contenido.imagePath" alt="" *ngIf="contenido.imagePath!=''">
+            <img src="/assets/blog/test.jpg" alt="" *ngIf="contenido.imagePath == ''" class="img-fluid">
+            <img [src]="contenido.imagePath" alt="" *ngIf="contenido.imagePath!=''" class="img-fluid">
           </div>
           <div class="elements">
             <div class="title">{{ contenido.title | slice:0:20 }}</div>
             <div class="subtitle">{{ contenido.subtitle | slice:0:20 }}</div>
-            <div class="short_desc" [innerHTML]="contenido.content | slice:0:50"></div>
+            <div class="short_desc" [innerHTML]="contenido.content | slice:0:100"></div>
           </div>
         </div>
       </div>

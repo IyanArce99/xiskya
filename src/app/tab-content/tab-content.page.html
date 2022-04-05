@@ -3,8 +3,9 @@
     <div class="container">
       <div class="row">
         <div class="d-flex col-12">
-          <button class="boton mt-2" routerLink="/tabs/tab3"><i class="fa-solid fa-angles-left icono"></i></button>
-          <ion-title>Contenido</ion-title>
+          <button class="boton my-2 py-2 px-4" routerLink="/tabs/tab3">
+            <i class="fas fa-angle-left icono"></i> Contenido
+          </button>
         </div>
       </div>
     </div>
@@ -19,11 +20,12 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h2 class="textoTitulo text-center"> {{contenido.title}} </h2>
-          <h4 class="textoSubtitulo text-center"> {{contenido.subtitle}} </h4>
+          <h2 class="textoTitulo"> {{contenido.title}} </h2>
+          <hr>
+          <h4 class="textoSubtitulo"> {{contenido.subtitle}} </h4>
         </div>
         <div class="col-12">
-          <div [innerHTML]="html"></div>
+          <div [innerHTML]="html" class="textoParrafo"></div>
         </div>
         <div class="col-12" *ngIf="contenido.pdfPath != ''">
           <a [href]="contenido.pdfPath" download target="_blank"><button class="botonPdf"> Descargar pdf</button></a> 

@@ -18,19 +18,19 @@
   </ion-header>
   
   <div class="container-persons">
-    <div *ngFor='let usuario of usuariosFiltrados | paginate: { itemsPerPage: 7, currentPage: p }' class="person-item -bc-p-3 -tc-white" (click)="abrirModalMensajes(usuario)">
+    <div *ngFor='let usuario of usuariosFiltrados | paginate: { itemsPerPage: 4, currentPage: p }' class="person-item -tc-white" (click)="abrirModalMensajes(usuario)">
       <!--<img src='https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png' alt='logo' *ngIf="usuario.imagePath == ''"/>
       <img [src]='usuario.imagePath' alt='logo' *ngIf="usuario.imagePath != ''"/>-->
       
       <div class='block-start'>
-        <div class="names">
+        <div class="names mb-3">
           <span>{{usuario.name}}</span>
-          <span>{{usuario.surname}}</span>
+          <!--<span>{{usuario.surname}}</span>-->
         </div>
         <div>
           <span> {{usuario.email}} </span>
         </div>
-        <span class="city">{{usuario.location}} <ion-icon slot="icon-only" name="chatbubbles"></ion-icon> </span>
+        <span class="city">{{usuario.location}} </span>
       </div>
 
       <div class="block-end">
