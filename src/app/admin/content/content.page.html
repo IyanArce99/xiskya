@@ -21,7 +21,7 @@
     <!--Div ver contenido-->
     <!------------------------------------------------------------------------------------------------------------------>
     <div class="notices" *ngIf="selector === 0 && contenidoTotal">
-      <div *ngFor="let contenido of contenidoTotal | paginate: { itemsPerPage: 5, currentPage: p }">
+      <div *ngFor="let contenido of contenidoTotal">
         <div class="notice mt-10">
           <div class="elements">
             <div class=" d-flex justify-content-between">
@@ -40,7 +40,6 @@
           <button class="boton"><i class="fas fa-edit editar" [routerLink]="['/admin/update-content', contenido.id]"></i></button>
         </div>
       </div>
-      <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
     </div>
 
     <!--Div crear contenido-->

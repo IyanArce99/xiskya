@@ -31,7 +31,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 15, currentPage: p }">
+          <tr *ngFor="let usuario of usuarios">
             <th scope="row">{{usuario.numberCongress}}</th>
             <td>{{usuario.name}}</td>
             <td>
@@ -43,8 +43,6 @@
           </tr>
         </tbody>
       </table>
-      <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente">
-      </pagination-controls>
     </div>
 
     <!--Div crear usuarios-->

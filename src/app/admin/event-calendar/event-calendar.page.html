@@ -24,7 +24,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let event of events | paginate: { itemsPerPage: 8, currentPage: p }">
+          <tr *ngFor="let event of events">
             <th scope="row"> {{event.name}} </th>
             <td> {{event.dateStart}} </td>
             <td> {{event.dateEnd}} </td>
@@ -34,7 +34,6 @@
           </tr>
         </tbody>
       </table>
-      <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
     </div>
   </div>
 </ion-content>
