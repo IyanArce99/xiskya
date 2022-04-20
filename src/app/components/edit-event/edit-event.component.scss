@@ -20,7 +20,7 @@ ion-icon {
     margin: 65px 12px 12px 12px;
     border-radius: 6px;
     padding: 6px;
-    --ion-item-background:var(--principal-2);
+    --ion-item-background:#e24d33;
     --ion-item-color: white;
 
     .button {
@@ -30,8 +30,8 @@ ion-icon {
         display: flex;
         justify-content: center;
         border-radius: 4px;
-        background: lightblue;
-        color: var(--principal-2);
+        background: #768096;
+        color: white;
         font-weight: 600;
     }
 
@@ -43,7 +43,7 @@ ion-icon {
         justify-content: center;
         border-radius: 4px;
         background: white;
-        color: var(--principal-2);
+        color: #e24d33;
         font-weight: 600;
     }
 
@@ -54,9 +54,10 @@ ion-icon {
         display: flex;
         justify-content: center;
         border-radius: 4px;
-        background: lightblue;
-        color: var(--principal-2);
+        background: #768096;
+        color: white;
         font-weight: 600;
+        font-weight: bold;
     }
 }
 

@@ -1,4 +1,4 @@
-  <ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true">
   <ion-header [translucent]="true">
     <ion-toolbar>
       <ion-buttons slot="primary" routerLink="/tabs/tab5">
@@ -8,7 +8,7 @@
       </ion-buttons>
       <ion-title class="title">Personas</ion-title>
     </ion-toolbar>
-    </ion-header>
+  </ion-header>
   <ion-header>
     <div class="header-top">
       <div class="input-icono">
@@ -16,12 +16,16 @@
       </div>
     </div>
   </ion-header>
-  
+
   <div class="container-persons">
     <div *ngFor='let usuario of usuariosFiltrados' class="person-item -tc-white" (click)="abrirModalMensajes(usuario)">
-      <!--<img src='https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png' alt='logo' *ngIf="usuario.imagePath == ''"/>
-      <img [src]='usuario.imagePath' alt='logo' *ngIf="usuario.imagePath != ''"/>-->
-      
+      <div class="ocultar-div">
+        <img
+          src='https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png'
+          alt='logo' *ngIf="usuario.imagePath == ''" />
+        <img [src]='usuario.imagePath' alt='logo' *ngIf="usuario.imagePath != ''" />
+      </div>
+
       <div class='block-start'>
         <div class="names mb-3">
           <span>{{usuario.name}}</span>

@@ -14,7 +14,7 @@ ion-icon {
     background: #768096;
     display: flex;
     justify-content: space-between;
-    font-size: 32px;
+    font-size: 24px;
     line-height: 32px;
     font-weight: bold;
     font: 'Roboto';
@@ -31,6 +31,9 @@ ion-icon {
             ion-icon {
                 font-size: 25px;
             }
+        }
+        .imagenIcono{
+            width: 90px;
         }
 }
 

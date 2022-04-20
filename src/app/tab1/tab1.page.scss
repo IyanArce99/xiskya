@@ -2,40 +2,48 @@ ion-toolbar {
     --border-style: none;
     --background: #4C5461;
 }
+
 ion-title {
     color: white;
 }
+
 ion-icon {
     color: white;
 }
+
 .container-persons {
     display: flex;
     flex-direction: column;
     padding: 12px;
     gap: 8px;
+
     .person-item {
         display: flex;
         padding: 15px;
         border-radius: 8px;
         background-color: #4C5461;
+
         img {
             width: 60px;
             border-radius: 4px;
             margin-right: 8px;
+            height: 100%;
         }
+
         .block-start {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
+
             .names {
                 display: flex;
                 gap: 3px;
                 font-weight: 600;
-                font-size: 32px;
+                font-size: 24px;
                 line-height: 32px;
                 font: 'Roboto';
             }
-            
+
             .city {
                 font-size: 16px;
             }
@@ -50,16 +58,22 @@ ion-icon {
             align-items: flex-end;
         }
 
-        .birth{
+        .birth {
             font-weight: bold;
         }
 
-        .congregation{
-            font-size: 30px;
+        .congregation {
+            font-size: 20px;
         }
     }
 }
 
-*{
+* {
     font: 'Roboto';
+}
+
+@media screen and (max-width: 390px) {
+    .ocultar-div {
+        display: none;
+    }
 }
