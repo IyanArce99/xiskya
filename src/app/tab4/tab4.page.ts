@@ -19,7 +19,7 @@ export class Tab4Page implements OnInit {
       content: 'https://www.eltestigofiel.org/index.php?idu=lt_liturgia'
     },
     {
-      srcIcon: '../../assets/icon/Liturgia-de-las-horas.png',
+      srcIcon: '../../assets/icon/ofertorio.png',
       title: 'Ofrecimiento diario',
       content: 'Dios, Padre nuestro, Yo te ofrezco toda mi jornada, Mis oraciones, pensamientos, afectos y deseos, Palabras, obras, alegrías y sufrimientos, En unión con tu Hijo Jesucristo, Que sigue ofreciéndose a ti En la Eucaristía, por la salvación del mundo. Que el Espíritu Santo que guió a Jesús Sea mi guía y mi fuerza en este día, Para que pueda ser testigo de tu amor. Con María, la Madre del Señor y de la Iglesia, Te pido especialmente por las intenciones Del Papa y de nuestros Obispos para este mes.'
     },
@@ -29,7 +29,7 @@ export class Tab4Page implements OnInit {
       content: 'V. El Ángel del Seńor anunció a María. R. Y concibió por obra del Espíritu Santo. Dios te salve, María... Santa María... V. He aquí la esclava del Seńor. R. Hágase en mí según tu palabra. Dios te salve, María... Santa María... V. Y el Verbo se hizo carne. R. Y habitó entre nosotros. Dios te salve, María... Santa María... V. Ruega por nosotros, santa Madre de Dios. R. Para que seamos dignos de alcanzar las promesas de Cristo. Oremos: Derrama, Seńor, tu gracia sobre nosotros, que, por el anuncio del Ángel, hemos conocido la encarnación de tu Hijo, para que lleguemos, por su pasión y su cruz, a la gloria de la resurrección. Por Jesucristo, nuestro Seńor. R. Amén.'
     },
     {
-      srcIcon: '../../assets/icon/Liturgia-de-las-horas.png',
+      srcIcon: '../../assets/icon/Regina_coeli.png',
       title: 'Regina coeli',
       content: 'Durante el tiempo pascual, en lugar del Ángelus, se dice el Regina coeli: V. Reina del cielo, alégrate. R. Aleluya. V. Porque el Señor, a quien mereciste llevar. R. Aleluya. V. Ha resucitado, como lo había dicho. R. Aleluya. V. Ruega al Señor por nosotros. R. Aleluya V. Goza y alégrate, Virgen María. Aleluya. R. Porque verdaderamente ha resucitado el Señor. Aleluya. Oremos: Oh Dios, que por la resurrección de tu Hijo, nuestro Señor Jesucristo, has llenado el mundo de alegría, concédenos, por intercesión de su Madre, la Virgen María, llegar a alcanzar los gozos eternos. Por el mismo Jesucristo, nuestro Señor. R. Amén.'
     },
