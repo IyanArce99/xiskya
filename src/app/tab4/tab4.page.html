@@ -19,7 +19,7 @@
       {{ oracion.title }}
     </div>
 
-    <div class="next" *ngIf="i==0 || i==5">
+    <!--<div class="next" *ngIf="i==0 || i==5">
       <div>
         <a href="https://www.eltestigofiel.org/index.php?idu=lt_liturgia" *ngIf="i==0" class="d-flex align-items-center">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -30,9 +30,9 @@
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </a>
       </div>
-    </div>
+    </div>-->
 
-    <div class="next" *ngIf="i!=0 && i!=5" (click)="presentModal(oracion)">
+    <div class="next" (click)="presentModal(oracion)">
       <ion-icon name="arrow-forward-outline"></ion-icon>
     </div>
   </div>
