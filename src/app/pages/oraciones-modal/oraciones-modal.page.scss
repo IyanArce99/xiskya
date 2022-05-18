@@ -22,6 +22,18 @@ ion-icon {
 }
 
 iframe{
-    width: 100%;
+    width: 1024px;
     height: 100vh;
+}
+
+.dektop-view {
+//     width: 1024px;
+//     height: 768;
+zoom: 0.75;
+-moz-transform: scale(0.75);
+-moz-transform-origin: 0 0;
+-o-transform: scale(0.75);
+-o-transform-origin: 0 0;
+-webkit-transform: scale(0.7);
+-webkit-transform-origin: 0 0;
 }
