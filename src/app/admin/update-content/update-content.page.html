@@ -12,7 +12,14 @@
 </ion-header>
 
 <ion-content>
-  <div class="wrapper">
+  <!--Spinner-->
+  <div class="spinner" *ngIf="spinner">
+    <div class="cube1"></div>
+    <div class="cube2"></div>
+  </div>
+  <!--End Spinner-->
+
+  <div class="wrapper" *ngIf="!spinner">
     <!--Div actualizar contenido-->
     <!------------------------------------------------------------------------------------------------------------------>
     <div class="container mt-20">

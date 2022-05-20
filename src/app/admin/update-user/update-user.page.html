@@ -12,7 +12,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="wrapper">
+  <!--Spinner-->
+  <div class="spinner" *ngIf="spinner">
+    <div class="cube1"></div>
+    <div class="cube2"></div>
+  </div>
+  <!--End Spinner-->
+  <div class="wrapper" *ngIf="!spinner">
     <!--Div crear usuarios-->
     <!------------------------------------------------------------------------------------------------------------------>
     <div class="container mt-20">

@@ -33,6 +33,9 @@ export class UpdateUserPage implements OnInit {
   file;
   previsualizarImagen = '';
 
+  //spinner
+  spinner:boolean = false;
+
   constructor(private fb: FormBuilder, private _dataService: DataService, private _router: ActivatedRoute, private afAuth: AngularFireAuth,
     private sanitizer: DomSanitizer, private storage: AngularFireStorage, private toastCtrl: ToastController, private route:Router) {
     this.agregarUsuariosForm = this.fb.group({
@@ -104,6 +107,8 @@ export class UpdateUserPage implements OnInit {
 
   //metodo para actualizar el usuario
   actualizarImagen() {
+    //mostramos el spinner
+    this.spinner = true;
     if (this.file === this.imagenOriginal) {
       //metodo actualizar usuario
       this.editarUsuario();
@@ -154,6 +159,7 @@ export class UpdateUserPage implements OnInit {
       }).then((data) => {
         data.present();
       })
+      this.spinner = false;
 
       //comprobamos si la variable sesion iniciada es true en caso de serlo actualizamos el user-complete de localStorage
       if(this.sesionIniciada == true){
@@ -169,6 +175,7 @@ export class UpdateUserPage implements OnInit {
       }
     }).catch(error => {
       console.log(error);
+      this.spinner = false;
     })
   }
 

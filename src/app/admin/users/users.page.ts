@@ -22,6 +22,9 @@ export class UsersPage implements OnInit, OnDestroy {
   //paginacion
   p: number = 1;
 
+  //spinner
+  spinner:boolean = false;
+
   //variables
   subscriptionUser: Subscription = new Subscription();
   selector: number = 0;
@@ -91,6 +94,8 @@ export class UsersPage implements OnInit, OnDestroy {
 
   //metodo para guardar la imagen
   guardarImagen() {
+    //mostramos el spinner
+    this.spinner = true;
     //comprobamos si existe fichero en caso de no existir pasamos directamente a añadir el contenido
     if (this.file.name != undefined) {
       //creamos una ruta para la imagen
@@ -161,6 +166,7 @@ export class UsersPage implements OnInit, OnDestroy {
       })
     }).catch(error => {
       console.log(error);
+      this.spinner = false;
     })
   }
 
@@ -187,9 +193,11 @@ export class UsersPage implements OnInit, OnDestroy {
       }).then((data) => {
         data.present();
       })
+      this.spinner = false;
 
     }).catch(error => {
       console.log(error);
+      this.spinner = false;
     })
   }
 

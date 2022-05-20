@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <div *ngFor="let oracion of frases; let i=index" class="oracion align-items-center">
+  <div *ngFor="let oracion of frases; let i=index" class="oracion align-items-center" (click)="presentModal(oracion)">
     <div class="next">
       <img [src]="oracion.srcIcon" class="img-fluid imagenIcono">
     </div>
@@ -32,7 +32,7 @@
       </div>
     </div>-->
 
-    <div class="next" (click)="presentModal(oracion)">
+    <div class="next">
       <ion-icon name="arrow-forward-outline"></ion-icon>
     </div>
   </div>

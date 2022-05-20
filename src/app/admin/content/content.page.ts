@@ -27,6 +27,9 @@ export class ContentPage implements OnInit {
   //paginacion
   p: number = 1;
 
+  //spinner
+  spinner:boolean = false;
+
   //Variables
   contenidoForm: FormGroup;
   selector: number = 0;
@@ -75,6 +78,8 @@ export class ContentPage implements OnInit {
 
   //metodo para guardar la imagen
   guardarImagen() {
+    //mostramos el spinner
+    this.spinner = true;
     //comprobamos si existe fichero en caso de no existir pasamos directamente a añadir el pdf
     if (this.file.name != undefined) {
       //creamos una ruta para la imagen
@@ -153,11 +158,16 @@ export class ContentPage implements OnInit {
         data.present();
       })
       this.mostrarPdf = true;
+      
+      //cerramos el spinner
+      this.spinner = false;
 
       //llamamos al metodo para limpiar el contenido de la previsualizacion
       this.limpiarContenidoPrevisualizacion();
     }).catch(error => {
       console.log(error);
+      //cerramos el spinner
+      this.spinner = false;
     })
   }
 

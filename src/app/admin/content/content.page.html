@@ -45,7 +45,13 @@
     <!--Div crear contenido-->
     <!------------------------------------------------------------------------------------------------------------------>
     <div class="container mt-20" *ngIf="selector === 1">
-      <div class="row">
+      <!--Spinner-->
+      <div class="spinner" *ngIf="spinner">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
+      </div>
+      <!--End Spinner-->
+      <div class="row" *ngIf="!spinner">
         <h4 class="text-center">Crear contenido</h4>
         <div class="col-10 offset-1">
           <form [formGroup]="contenidoForm" (ngSubmit)="guardarImagen()">

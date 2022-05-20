@@ -44,6 +44,9 @@ export class UpdateContentPage implements OnInit {
   filePdf;
   urlPdf: Observable<string>;
 
+  //spinner
+  spinner:boolean = false;
+
   constructor(private fb: FormBuilder, private _dataService: DataService, private _router: ActivatedRoute, private afAuth: AngularFireAuth,
     private sanitizer: DomSanitizer, private storage: AngularFireStorage, private toastCtrl: ToastController, private route: Router) {
     this.contenidoForm = this.fb.group({
@@ -176,6 +179,8 @@ export class UpdateContentPage implements OnInit {
   ---------------------------------------------------------------
   */
   actualizarImagen() {
+    //mostramos el spinner
+    this.spinner = true;
     if (this.file != this.imagenOriginal) {
       //las imagenes son distintas por lo que hay que guardar la nueva imagen y modificar el campo del formulario
       //comprobamos si existe fichero en caso de no existir pasamos directamente a comprobar el pdf
@@ -265,10 +270,14 @@ export class UpdateContentPage implements OnInit {
       }).then((data) => {
         data.present();
       })
+      //cerramos el spinner
+      this.spinner = false;
 
       this.route.navigate(['admin/content']);
     }).catch(error => {
       console.log(error);
+      //cerramos el spinner
+      this.spinner = false;
     })
   }
 
